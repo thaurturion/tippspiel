@@ -1,0 +1,99 @@
+body {
+	background-image: url(../images/bg.jpg);
+}
+
+#wrapper {
+	width: 1024px;
+	margin: 10px 10px 0% 2%;
+	background-color: black;
+	border: 1px solid #B3B2B2;
+}
+
+header {
+
+	background-color: #62B200;
+	float: left;
+	color: white;
+}
+
+#logo {
+	width: 400px;
+	float: left;
+	'background-image: url(/images/logo.jpg)
+}
+
+nav {
+	background-image: url(../images/navbg.jpg);
+	float: left;
+	width: 1024px;
+	height:152px;
+	border-top: 1px solid #B3B2B2;
+}
+
+#content {
+	color:blue;
+	width:994px;
+	background-color: #62B200;
+	padding: 20px 20px 10px 10px;
+	float: left;
+}
+
+#desc {
+	width: 604px;
+	margin-top: 10px;
+	padding-right: 20px;
+	text-align: right;
+	float: left;
+	font-size: 200%;
+	font-family: "Arial Black,Times,serif";
+}
+
+#desc a {
+	color: white;
+	text-decoration: none;
+}
+
+footer {
+	'background-image: (../images/navbg.jpg);
+	background-color: #B3B2B2;
+	width: 1024px;
+	height: 20px;
+}
+
+#login {
+	background-color: #B3B2B2;
+	height: 20px;
+	width: 100px;
+	text-align: center;
+	float: right;
+}
+
+#left {
+	float:left;
+	width:200px;
+}
+
+#right {
+	float:left;
+	width: 200px;
+}
+
+
+h2:focus {
+	color: white;
+}
+
+h2:hover {
+	color: white;
+}
+
+h2:active {
+	color: white;
+}
+
+td.number {
+	text-align:right;
+}
+
+
+
