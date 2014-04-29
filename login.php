@@ -1,18 +1,19 @@
 <h1>Willkommen beim WM Tippspiel</h1>
 
-<form>
+<form action="enter.php" method="post">
 	<div id="left">
-		Nachname:<br>
-		Vorname:<br>
 		Benutzername:<br>
-		<input type="submit">
+		Passwort:<br>
+		<input type="submit" value="Login!">
 	</div>
 	<div id="right">
-		<input type="text">
+		
+		<input type="text" name="username">
 		<br>
-		<input type="text">
+		<input type="password" name="password">
 		<br>
-		<input type="text">
-		<br>
+
+		
 	</div>
+
 </form>
