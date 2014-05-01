@@ -2,7 +2,11 @@
 session_start();
 ?>
 
-<h1>Willkommen beim WM Tippspiel</h1>
+<h1>Willkommen <?php
+$name = $_SESSION['username'];
+
+//Text ausgeben
+echo $name; ?> beim WM Tippspiel</h1>
 
 <p>
 	Die Endrunde der Fußball-Weltmeisterschaft 2014 (portugiesisch Copa do Mundo FIFA, englisch FIFA World Cup) der Männer ist die 20. Ausspielung des bedeutendsten Turniers für Fußball-Nationalmannschaften und findet vom 12. Juni bis zum 13. Juli 2014 in Brasilien statt. Titelverteidiger ist der Weltmeister von 2010, Spanien. Der Sieger ist automatisch für den FIFA-Konföderationen-Pokal 2017 qualifiziert.
