@@ -1,0 +1,192 @@
+#header {
+	position: absolute;
+	left: 5px;
+	right: 5px;
+	top: 5px;
+	height: 120px;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 5px;
+	overflow: hidden;
+}
+
+#navi {
+	position: absolute;
+	left: 5px;
+	width: 195px;
+	top: 130px;
+	bottom: 35px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	-webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 5px;
+	overflow: auto;
+}
+
+#content {
+	position: absolute;
+	left: 225px;
+	right: 5px;
+	top: 130px;
+	bottom: 35px;
+	border: 1px solid #ccc;
+	padding:20px;
+	-webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 5px;
+	overflow: auto;
+}
+
+#footer {
+	position: absolute;
+	left: 5px;
+	right: 5px;
+	bottom: 5px;
+	height: 25px;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 5px;	-moz-border-radius: 5px; border-radius: 5px;
+	overflow: hidden;
+}
+
+
+
+<!-- ------------------------------ -->
+
+/* Pseudo-Selektoren */
+
+a:link {
+  color: rgb(0%, 0%, 60%);
+  text-decoration:none;
+}
+a:visited {
+  color: rgb(0%, 0%, 60%);
+  text-decoration:none;
+}
+a:hover {
+  color: rgb(50%, 50%, 100%);
+  text-decoration:none;
+}
+
+
+
+/* Universalselektor */
+
+* {
+  font-family: Verdana, Arial;
+  font-size: 12px;
+}
+
+/* Elementselektor */
+
+body {
+  background-color: rgb(100%, 100%, 80%);
+}
+
+
+h1, h2 {
+  color: rgb(0%, 0%, 60%);
+  text-align:center;
+}
+
+h1 {
+  letter-spacing:5px;
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+table {
+  border-spacing: 2px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+th, td {
+  text-align: left;
+  border-width: 1px;
+  border-color: rgb(0%, 0%, 0%);
+  border-style: solid;
+
+  padding: 2px;
+}
+
+
+
+/* Class-Selektor */
+.logo1, logo2 {
+  position:absolute;
+  top:10px;
+  left:30px;
+  height:100px;
+}
+
+.logo2 {
+  position:absolute;
+  top:10px;
+  right:30px;
+  border-style: hidden;
+  height:100px;
+}
+
+.klassenfoto {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.fusszeile {
+  color: rgb(0%, 0%, 60%);
+  text-align:center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.inhalt {
+  background-color: rgb(100%, 100%, 90%);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(0%, 0%, 60%);
+  padding: 15px;
+  margin: 20px;
+}
+
+.inhalt_ueberschrift {
+  font-size: 14px;
+  text-align:left;
+  font-weight:bold;
+}
+
+.menu {
+  background-color: rgb(100%, 100%, 90%);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(0%, 0%, 60%);
+  padding: 5px;
+  margin: 20px;
+}
+
+.menuitem{
+  padding: 2px;
+  border-bottom: 1px solid #ccc;
+}
+
+.menuitem:hover{
+  color: #f00;
+  cursor: pointer;
+}
+
+.rechtsbuendig {
+  float:right;
+  margin-left:10px;
+  margin-right:10px;
+  margin-bottom:10px;
+}
+
+
+.besucherzaehler {
+  border: 1px solid black;
+  background-color: white;
+  color: blue;
+  padding: 2px;
+  font-size:10px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

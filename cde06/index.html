@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+  
+  <head>
+    <title>CDE - Club der Ehemaligen</title>
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<link href="css/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/ui.css">
+	<script type="text/javascript" src="jquery-1.9.1.js"></script>
+	<script src="js/jquery-ui-1.10.2.custom.js"></script>
+	<script type="text/javascript">
+		jQuery(function(){
+
+			$.ajaxSetup({ 
+				cache: false 
+			});
+			
+			jQuery('#header').load('kopf.php');
+			jQuery('#content').load('startseite.php');
+			jQuery('#footer').load('fusszeile.html');
+			
+			loadNavi();
+
+		});
+		
+		function loadNavi(){
+			jQuery('#navi').load('navigation.php', function(){
+			
+					jQuery('#memberonly').hide();
+			
+					jQuery('#start').click(function(){
+					   jQuery('#content').load('startseite.php');
+					});
+					jQuery('#idee').click(function(){
+					   jQuery('#content').load('idee.php');
+					});
+					jQuery('#schule').click(function(){
+					   jQuery('#content').load('schule.php');
+					});
+					jQuery('#kontakt').click(function(){
+					   jQuery('#content').load('kontakt.php');
+					});
+					jQuery('#ehemaligenverzeichnis').click(function(){
+					   jQuery('#content').load('ehemaligenverzeichnis.php');
+					});
+					jQuery('#login').click(function(){
+					   jQuery('#content').load('login.html');
+					});
+					jQuery('#logout').click(function(){
+					   jQuery('#content').load('logout.php');
+					});
+					jQuery('#logliste').click(function(){
+					   jQuery('#content').load('logliste.php');
+					});
+					jQuery('#liste').click(function(){
+					   jQuery('#content').load('liste.php');
+					});
+					jQuery('#listenimport').click(function(){
+					   jQuery('#content').load('listenimport.html');
+					});
+					jQuery('#statistik1').click(function(){
+					   jQuery('#content').load('statistik1.php');
+					});
+					jQuery('#statistik2').click(function(){
+					   jQuery('#content').load('statistik2.php');
+					});
+					jQuery('#sessionende').click(function(){
+					   jQuery('#content').load('delete_session.php');
+					});
+			});
+		}
+	</script>
+  </head>
+  
+  <body>
+  
+    <div id="header"></div>
+    <div id="navi"></div>
+    <div id="content"></div>
+    <div id="footer"></div>
+  
+  </body>
+  
+</html>

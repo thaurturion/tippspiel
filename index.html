@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>WM-Tippspiel</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<meta name="description" content="WM-Tippspiel">
+		<meta name="author" content="Fabian Bode, Manuel Digeser, Marc Kaltenbach">
+
+		<link rel="shortcut icon" href="images/favicon.ico"/>
+		<link rel="icon" href="images/favicon.ico"/>
+		<link rel="stylesheet" type="text/css" href="css/layout.css">
+		<link href="css/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+		<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+		<script src="js/jquery-ui-1.10.2.custom.js"></script>
+
+		<script type="text/javascript">
+			jQuery(function() {
+
+				$.ajaxSetup({
+					cache : false
+				});
+
+				jQuery('header').load('header.html');
+				jQuery('#content').load('index-cont.php');
+				jQuery('#footer').load('footer.html');
+
+				loadNavi();
+
+			});
+
+			function loadNavi() {
+				jQuery('#navi').load('nav.html', function() {
+
+					jQuery('#memberonly').hide();
+
+					jQuery('#start').click(function() {
+						jQuery('#content').load('startseite.php');
+					});
+					jQuery('#idee').click(function() {
+						jQuery('#content').load('idee.php');
+					});
+					jQuery('#schule').click(function() {
+						jQuery('#content').load('schule.php');
+					});
+					jQuery('#kontakt').click(function() {
+						jQuery('#content').load('kontakt.php');
+					});
+					jQuery('#ehemaligenverzeichnis').click(function() {
+						jQuery('#content').load('ehemaligenverzeichnis.php');
+					});
+					jQuery('#login').click(function() {
+						jQuery('#content').load('login.html');
+					});
+					jQuery('#logout').click(function() {
+						jQuery('#content').load('logout.php');
+					});
+					jQuery('#logliste').click(function() {
+						jQuery('#content').load('logliste.php');
+					});
+					jQuery('#liste').click(function() {
+						jQuery('#content').load('liste.php');
+					});
+					jQuery('#listenimport').click(function() {
+						jQuery('#content').load('listenimport.html');
+					});
+					jQuery('#statistik1').click(function() {
+						jQuery('#content').load('statistik1.php');
+					});
+					jQuery('#statistik2').click(function() {
+						jQuery('#content').load('statistik2.php');
+					});
+					jQuery('#sessionende').click(function() {
+						jQuery('#content').load('delete_session.php');
+					});
+				});
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div id="wrapper">
+			<nav> </nav>
+			<header> </header>			
+
+			<div id="content"> </div>
+			<footer> </footer>
+		</div>
+
+	</body>
+
+</html>
+

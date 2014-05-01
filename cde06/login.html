@@ -1,0 +1,46 @@
+<script type="text/javascript">
+	jQuery(function(){
+	
+		jQuery('#registrieren').click(function(){
+			jQuery('#content').load('registrierung.html');
+		});
+
+	
+		jQuery('#submitbtn').click(function(){
+			jQuery.post(
+				'handle_login.php?',
+				jQuery('#logindaten').serialize(),
+				function(data){
+					jQuery('#content').empty();
+					jQuery('#content').append(data);
+					loadNavi();
+				},
+				'html'
+			);
+			
+		});
+		
+	});
+</script>
+
+
+<div class="inhalt">
+
+	<h1 class="inhalt_ueberschrift">Login</h1>
+
+	<p>
+	Geben Sie bitte ihren Benutzername und ihr Kennwort ein:
+	</p>
+	
+	<form id="logindaten" action="handle_login.php" method="post" onsubmit="return false">
+		Name:<br>
+		<input type="text" name="name" size="30"><br>
+		Kennwort:<br>
+		<input type="password" name="pwd" size="30"><br>
+		<input id="submitbtn" type="submit" value="Anmelden" style="margin-top:20px">
+	</form>
+	
+	<p>
+	Sollten Sie noch nicht registriert sein, dann können Sie sich <span id="registrieren" style="color:#00a;cursor:pointer;">hier</span> anmelden!
+	</p>
+</div>	

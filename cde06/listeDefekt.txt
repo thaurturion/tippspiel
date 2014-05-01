@@ -1,0 +1,8 @@
+﻿Vader,Darth
+Skywalker,Anakin
+Skywalker,Luke
+Solo,Han
+C-3PO
+Kenobi,Obi-Wan
+D2,R2
+Tarkin,Großmoff

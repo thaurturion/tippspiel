@@ -1,0 +1,42 @@
+<script type="text/javascript">
+
+jQuery(function(){
+	jQuery('#ergebnistitel').hide();
+
+	jQuery('#btnImport').click(function(){
+		jQuery.post(
+			'handle_listenimport.php',
+			{
+				fn: jQuery('#filename').val()
+			},
+			function(data){
+			jQuery('#ergebnistitel').show();
+				jQuery('#ergebnis').empty();
+				jQuery('#ergebnis').append(data);
+			},
+			'html'
+		);
+	});
+});
+
+</script>
+
+
+<h1>Listenimport</h1>
+
+
+<form action="#" method="post">
+	<p>
+	Geben Sie den Namen der zu importierenden Datei ein. Die Datei muss sich
+	bereits	im Projektverzeichnis befinden.
+	</p>
+	Dateiname: 
+	<input type="text" name="filename" id="filename" size="20" maxlength="40" value="listeA.txt">
+	<input type="button" id="btnImport" value="Import starten">
+</form>
+
+
+<h3 id="ergebnistitel">Ergebnis:</h3>
+<div id="ergebnis">
+</div>
+
