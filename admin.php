@@ -20,7 +20,7 @@ if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
 </script>
 
 <h1>Hier entsteht die Eingabemaske für die Spielergebnisse.</h1>
-
+bist du admin? <?php echo $_SESSION['admin']; ?>
 <form id="ergebnis" action="handle_ergebnis.php" method="post" onsubmit="return false">
 	<table>
 		<?php
@@ -56,6 +56,8 @@ if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
 		$mysqli -> close();
 	?>
 </table>
+
+<input id="submitbtn" type="submit" value="Spielergebnisse eintragen!" style="margin-top:20px">
 
 </form>
 

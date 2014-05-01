@@ -11,7 +11,8 @@
 				'handle_login.php?',
 				jQuery('#logindaten').serialize(),
 				function(data){
-					jQuery('#content').append(data);
+					jQuery('#content').empty();
+					jQuery('#content').load('index-cont.php');
 					loadNavi();
 					loadFooter();
 					loadHeader();
