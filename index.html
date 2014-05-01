@@ -26,7 +26,7 @@
 					cache : false
 				});
 
-				jQuery('header').load('header.html');
+				jQuery('header').load('header.php');
 				jQuery('#content').load('index-cont.php');
 				jQuery('#footer').load('footer.html');
 
@@ -35,49 +35,17 @@
 			});
 
 			function loadNavi() {
-				jQuery('#navi').load('nav.html', function() {
+				jQuery('nav').load('nav.php', function() {
 
-					jQuery('#memberonly').hide();
+					//jQuery('#memberonly').hide();
 
 					jQuery('#start').click(function() {
-						jQuery('#content').load('startseite.php');
+						jQuery('#content').load('index-cont.php');
 					});
-					jQuery('#idee').click(function() {
-						jQuery('#content').load('idee.php');
+					jQuery('#tippabgabe').click(function() {
+						jQuery('#content').load('gruppenphase.php');
 					});
-					jQuery('#schule').click(function() {
-						jQuery('#content').load('schule.php');
-					});
-					jQuery('#kontakt').click(function() {
-						jQuery('#content').load('kontakt.php');
-					});
-					jQuery('#ehemaligenverzeichnis').click(function() {
-						jQuery('#content').load('ehemaligenverzeichnis.php');
-					});
-					jQuery('#login').click(function() {
-						jQuery('#content').load('login.html');
-					});
-					jQuery('#logout').click(function() {
-						jQuery('#content').load('logout.php');
-					});
-					jQuery('#logliste').click(function() {
-						jQuery('#content').load('logliste.php');
-					});
-					jQuery('#liste').click(function() {
-						jQuery('#content').load('liste.php');
-					});
-					jQuery('#listenimport').click(function() {
-						jQuery('#content').load('listenimport.html');
-					});
-					jQuery('#statistik1').click(function() {
-						jQuery('#content').load('statistik1.php');
-					});
-					jQuery('#statistik2').click(function() {
-						jQuery('#content').load('statistik2.php');
-					});
-					jQuery('#sessionende').click(function() {
-						jQuery('#content').load('delete_session.php');
-					});
+
 				});
 			}
 		</script>
@@ -87,10 +55,10 @@
 
 		<div id="wrapper">
 			<nav> </nav>
-			<header> </header>			
+			<header> </header>
 
 			<div id="content"> </div>
-			<footer> </footer>
+			<div id="footer"> </div>
 		</div>
 
 	</body>

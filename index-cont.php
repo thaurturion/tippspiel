@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <h1>Willkommen beim WM Tippspiel</h1>
 
 <p>
@@ -6,36 +10,29 @@
 
 	Der Beschluss des FIFA-Exekutivkomitees, Brasilien zum zweiten Mal nach 1950 zum Gastgeber der Weltmeisterschaft zu ernennen, fiel am 30. Oktober 2007 in Zürich. Als Gastgeber der WM war Brasilien automatisch Ausrichter des Konföderationen-Pokals 2013.
 </p>
+
+http://jasonweaver.name/lab/flexiblenavigation/
+
+http://docs.dev7studios.com/jquery-plugins/caroufredsel
+
 <p>
 	Tabelle der aktuellen Teilnehmer
 </p>
+
 <table bgcolor="#FFFFFF" align="center">
 	<tr>
 		<td>Spieler</td>
 		<td>Punktestand</td>
-		
-		http://jasonweaver.name/lab/flexiblenavigation/
+
 	</tr>
+
 	<?php
-	// Datenbankverbindung herstellen
-	$sqlserver = "localhost";
-	$user = "root";
-	$pass = "";
-	$dbase = "tippspiel";
-	$conn = @mysql_connect($server, $user, $pass) or die("Fehler beim Datenbankzugriff");
-	mysql_select_db($dbase, $conn);
-	?>
-	<?php
-	$tabelle = mysql_query("SELECT * FROM user");
+	$mysqli = new mysqli('localhost', 'root', '', 'tippspiel');
+	$tabelle = $mysqli->query("SELECT * FROM user");
 	while ($z = mysql_fetch_array($tabelle)) {
 		echo '<tr>';
 		echo '<td>' . $z['username'] . '</td>' . '<td class="number">' . $z['point'] . '</td>';
 		echo "</tr>";
 	} //while
-	?>
-</table>
-
-<?php
-// Datenbank schließen
-mysql_close();
 ?>
+</table>
