@@ -3,7 +3,7 @@
 ?>
 
 &copy; Fabian Bode, Manuel Digeser and Marc Kaltenbach <?php
-if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
+if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1 ){
 ?>
 	<a href="#" onclick="loadAdmin();">Admin</a></div>
 	
