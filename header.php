@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <div id="logo">
 	<img src="images/logo.jpg" />
 </div>

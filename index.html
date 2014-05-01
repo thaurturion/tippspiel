@@ -26,13 +26,26 @@
 					cache : false
 				});
 
-				jQuery('header').load('header.php');
+				loadHeader();
 				jQuery('#content').load('index-cont.php');
-				jQuery('#footer').load('footer.html');
-
+				
+				loadFooter();
 				loadNavi();
+				loadAdmin();
 
 			});
+			
+			function loadFooter() {
+				jQuery('#footer').load('footer.php');
+			}
+			
+			function loadAdmin() {
+				jQuery('#content').load('admin.php');
+			}
+
+			function loadHeader() {
+				jQuery('header').load('header.php');
+			}
 
 			function loadNavi() {
 				jQuery('nav').load('nav.php', function() {
@@ -42,7 +55,7 @@
 					jQuery('#start').click(function() {
 						jQuery('#content').load('index-cont.php');
 					});
-					jQuery('#tippabgabe').click(function() {
+					jQuery('#gruppenphase').click(function() {
 						jQuery('#content').load('gruppenphase.php');
 					});
 
@@ -54,11 +67,11 @@
 	<body>
 
 		<div id="wrapper">
-			<nav> </nav>
-			<header> </header>
+			<nav></nav>
+			<header></header>
 
-			<div id="content"> </div>
-			<div id="footer"> </div>
+			<div id="content"></div>
+			<div id="footer"></div>
 		</div>
 
 	</body>

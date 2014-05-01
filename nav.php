@@ -6,15 +6,16 @@ session_start();
 <script type="text/javascript">
 	jQuery(function() {
 		jQuery("#accordion").accordion({
-			heightStyle : "content"
+			heightStyle : "content",
+			collapsible:true,
+			active:false
 		});
 	}); 
-	$('#accordion').accordion({collapsible:true,active:false});
 </script>
 
 
 <div id="accordion">
-	<h3>Willkommen</h3>
+	<h4>Willkommen</h4>
 	<div>
 		<p>
 			<div id="start" class="menuitem">
@@ -35,7 +36,7 @@ session_start();
 if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
 			?>
 			<div id="liste" class="menuitem">
-				Benutzeraccunt
+				Benutzeraccount
 			</div>
 			<?php
 			}

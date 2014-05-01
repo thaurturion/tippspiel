@@ -1,8 +1,8 @@
 <script type="text/javascript">
 	jQuery(function(){
 	
-		jQuery('#registrieren').click(function(){
-			jQuery('#content').load('registrierung.html');
+		jQuery('#register').click(function(){
+			jQuery('#content').load('register.html');
 		});
 
 	
@@ -11,9 +11,10 @@
 				'handle_login.php?',
 				jQuery('#logindaten').serialize(),
 				function(data){
-					jQuery('#content').empty();
 					jQuery('#content').append(data);
 					loadNavi();
+					loadFooter();
+					loadHeader();
 				},
 				'html'
 			);
@@ -37,8 +38,9 @@
 		<br>
 		<input type="password" name="password">
 		<br>
-
-		
 	</div>
-
 </form>
+
+<p>
+	Sollten Sie noch nicht registriert sein, dann können Sie sich <span id="register" style="color:#00a;cursor:pointer;">hier</span> anmelden!
+	</p>

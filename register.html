@@ -1,0 +1,39 @@
+<script type="text/javascript">
+	jQuery(function(){
+		jQuery('#submitbtn').click(function(){
+			jQuery.post(
+				'handle_registrierung.php?',
+				jQuery('#anmeldedaten').serialize(),
+				function(data){
+					jQuery('#content').empty();
+					jQuery('#content').append(data);
+				},
+				'html'
+			);
+			
+		});
+		
+	});
+</script>
+
+
+<div class="inhalt">
+
+	<h1 class="inhalt_ueberschrift">Anmeldung</h1>
+
+	<p>
+	Füllen Sie bitte die Felder aus:
+	</p>
+	
+	<form id="anmeldedaten" action="handle_registrierung.php" method="post" onsubmit="return false">
+		Name:<br>
+		<input type="text" name="name" size="30"><br>
+		Kennwort:<br>
+		<input type="password" name="pwd1" size="30"><br>
+		Kennwort (Bestätigung):<br>
+		<input type="password" name="pwd2" size="30"><br>
+		E-Mail-Adresse:<br>
+		<input type="text" name="email" size="30"><br>
+		<input id="submitbtn" type="submit" value="Registrieren" style="margin-top:20px">
+	</form>
+</div>	
