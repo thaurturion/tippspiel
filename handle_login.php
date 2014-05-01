@@ -65,7 +65,7 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
 		$_SESSION["username"] = $username;
 		echo "<h2>Login akzeptiert</h2>";
 		
-		if($admin == 1) {
+		if($admin ==  1) {
 			$_SESSION["admin"] = 1;
 		}
 	} else {
