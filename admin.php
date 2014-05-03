@@ -22,7 +22,14 @@ if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
 <h1>Hier entsteht die Eingabemaske für die Spielergebnisse.</h1>
 bist du admin? <?php echo $_SESSION['admin']; ?>
 <form id="ergebnis" action="handle_ergebnis.php" method="post" onsubmit="return false">
-	<table>
+	<table border="1" style="padding:5px;">
+		<tr>
+			<th>Datum</th>
+			<th>Land A</th>
+			<th>Tipp A</th>
+			<th>Land B</th>
+			<th>Tipp B</th>
+		</tr>
 		<?php
 
 		//Verbindung zur DB aufbauen  (Schritt 2)
@@ -35,7 +42,7 @@ bist du admin? <?php echo $_SESSION['admin']; ?>
 		} else {
 			//...ja!
 			//SQL-Anweisung formlieren  (Schritt 3)
-			$sql = "SELECT a.team_name as ateam, b.team_name as bteam FROM game JOIN team a ON game.teamA = a.ID JOIN team b ON game.teamB = b.ID WHERE a.group='G'";
+			$sql = "SELECT datetime, a.team_name as ateam, b.team_name as bteam FROM game JOIN team a ON game.teamA = a.ID JOIN team b ON game.teamB = b.ID WHERE a.group='G'";
 			//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
 			if ($result = $mysqli -> query($sql)) {
 				//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
@@ -43,7 +50,7 @@ bist du admin? <?php echo $_SESSION['admin']; ?>
 				while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
 					echo '<tr>';
-					echo '<td>' . $row['ateam'] . '</td>' . '<td>' . $row['bteam'] . '</td>' . '<td><input type="text" value="ScoreA"></td>' . '<td><input type="text" value="ScoreB"></td>';
+					echo '<td>' . $row['datetime'] . '</td>' .'<td>' . $row['ateam'] . '</td>' . '<td><input type="text" value="ScoreA" name="'. $row['ateam'] .'">'.'</td>' . '<td>' . $row['bteam'] . '</td>' . '<td><input type="text" value="ScoreB"></td>';
 					echo "</tr>";
 
 				}
