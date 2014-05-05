@@ -10,13 +10,28 @@ if ($mysqli -> error) {
 } else {
 	//...ja!
 	//SQL-Anweisung formlieren  (Schritt 3)
-	$sql = "insert into user (username, password, email, admin, point) values ('" . $_POST['name'] . "', '" . $_POST['pwd1'] . "', '" . $_POST['email'] . "', 0, 0)";
-	//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
-	if ($mysqli -> query($sql) === TRUE) {
-		echo "Datensatz erfolgreich eingefügt";
+	$allgames = "SELECT g.id as id FROM game g";
+
+	$sql = "insert into game (ID, scoreA, scoreB) values ('" . $row['id'] . "', '" . $_POST['id'.'a'.''] . "', '" . $_POST['email'] . "')";
+
+	if ($result = $mysqli -> query($allgames)) {
+		//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
+
+		while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
+
+			//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
+			if ($mysqli -> query($sql) === TRUE) {
+				echo "Datensatz erfolgreich eingefügt";
+			} else {
+				echo "Kein Datensatz eingefügt";
+			}
+		}
+		$result -> close();
 	} else {
-		echo "Kein Datensatz eingefügt";
+		//Fehler beim Absetzen der SQL-Anweisung
+		echo('Fehler beim Senden der SQL-Anweisung (' . $mysqli -> errno . '): ' . $mysqli -> error);
 	}
+
 }
 $mysqli -> close();
 ?>

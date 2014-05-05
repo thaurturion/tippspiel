@@ -42,7 +42,7 @@ bist du admin? <?php echo $_SESSION['admin']; ?>
 		} else {
 			//...ja!
 			//SQL-Anweisung formlieren  (Schritt 3)
-			$sql = "SELECT datetime, a.team_name as ateam, b.team_name as bteam FROM game JOIN team a ON game.teamA = a.ID JOIN team b ON game.teamB = b.ID WHERE a.group='G'";
+			$sql = "SELECT g.id as id, g.datetime as datetime, a.team_name as ateam, b.team_name as bteam FROM game g JOIN team a ON g.teamA = a.ID JOIN team b ON g.teamB = b.ID WHERE a.group='G'";
 			//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
 			if ($result = $mysqli -> query($sql)) {
 				//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
@@ -50,7 +50,7 @@ bist du admin? <?php echo $_SESSION['admin']; ?>
 				while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
 					echo '<tr>';
-					echo '<td>' . $row['datetime'] . '</td>' .'<td>' . $row['ateam'] . '</td>' . '<td><input type="text" value="ScoreA" name="'. $row['ateam'] .'">'.'</td>' . '<td>' . $row['bteam'] . '</td>' . '<td><input type="text" value="ScoreB"></td>';
+					echo '<td>' . $row['datetime'] . '</td>' .'<td>' . $row['ateam'] . '</td>' . '<td><input type="text" value="ScoreA" name="'. $row['id'] .'a">'.'</td>' . '<td>' . $row['bteam'] . '</td>' . '<td><input type="text" value="ScoreB" name="'. $row['id'] .'b"></td>';
 					echo "</tr>";
 
 				}
