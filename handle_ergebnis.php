@@ -23,7 +23,7 @@ if ($mysqli -> error) {
 			if ($mysqli -> query($sql) === TRUE) {
 				echo "Datensatz erfolgreich eingefügt";
 			} else {
-				echo "Kein Datensatz eingefügt";
+				echo "Kein Datensatz TESTeingefügt";
 			}
 		}
 		$result -> close();
