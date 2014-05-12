@@ -40,7 +40,7 @@ http://docs.dev7studios.com/jquery-plugins/caroufredsel
 	} else {
 		//...ja!
 		//SQL-Anweisung formlieren  (Schritt 3)
-		$sql = "SELECT * FROM user";
+		$sql = "SELECT * FROM user order by point DESC";
 		//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
 		if ($result = $mysqli -> query($sql)) {
 			//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
