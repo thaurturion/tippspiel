@@ -28,17 +28,17 @@
 
 				loadHeader();
 				jQuery('#content').load('index-cont.php');
-				
+
 				loadFooter();
 				loadNavi();
 				loadAdmin();
 
 			});
-			
+
 			function loadFooter() {
 				jQuery('#footer').load('footer.php');
 			}
-			
+
 			function loadAdmin() {
 				jQuery('#content').load('admin.php');
 			}
@@ -57,6 +57,9 @@
 					});
 					jQuery('#gruppenphase').click(function() {
 						jQuery('#content').load('gruppenphase.php');
+					});
+					jQuery('#highscore').click(function() {
+						jQuery('#content').load('highscore.php');
 					});
 
 				});

@@ -10,22 +10,27 @@ if ($mysqli -> error) {
 } else {
 	//...ja!
 	//SQL-Anweisung formlieren  (Schritt 3)
-	$allgames = "SELECT g.id as id FROM game g";
-
-	$sql = "insert into game (ID, scoreA, scoreB) values ('" . $row['id'] . "', '" . $_POST['id'.'a'.''] . "', '" . $_POST['email'] . "')";
+	$allgames = "SELECT id FROM game";
 
 	if ($result = $mysqli -> query($allgames)) {
 		//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
 
 		while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
+			$ida = $row['id'] . 'a';
+			$idb = $row['id'] . 'b';
+			echo $_POST[$ida];
+			echo $_POST[$idb];
 
+			$sql = "UPDATE game g SET g.scoreA = " . $_POST[$ida] . ", g.scoreB = " . $_POST[$idb] . " WHERE g.ID = " . $row['id'];
 			//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
+
 			if ($mysqli -> query($sql) === TRUE) {
 				echo "Datensatz erfolgreich eingefügt";
 			} else {
-				echo "Kein Datensatz TESTeingefügt";
+				echo "Kein Datensatz eingefügt";
 			}
 		}
+		include 'highscore_neuberechnen.php';		
 		$result -> close();
 	} else {
 		//Fehler beim Absetzen der SQL-Anweisung

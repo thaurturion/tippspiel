@@ -2,17 +2,15 @@
 session_start();
 ?>
 
-
 <script type="text/javascript">
 	jQuery(function() {
 		jQuery("#accordion").accordion({
-			highstyl: "content",
-			collapsible:true,
-			active:false
+			heightstyle : "content",
+			collapsible : true,
+			active : false
 		});
 	}); 
 </script>
-
 
 <div id="accordion">
 	<h4>Willkommen</h4>
@@ -21,45 +19,54 @@ session_start();
 			<div id="start" class="menuitem">
 				Startseite
 			</div>
-			<div id="gruppenphase" class="menuitem">
-				Dein Tipp!
+			<?php
+				if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
+			?>
+			<div id="benutzerverwaltung" class="menuitem">
+				Benutzerverwaltung
 			</div>
+			<?php
+			}
+			?>
 		</p>
 	</div>
-	<h3>Meine Tipps</h3>
+	<?php
+		if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
+	?>
+	
+	<h3>Deine Tipps</h3>
 	<div>
 		<p>
-			<div id="ehemaligenverzeichnis" class="menuitem">
-				Ehemaligenverzeichnis
+			<div id="gruppenphase" class="menuitem">
+				Gruppenphase
 			</div>
-		
+			<div id="kophase" class="menuitem">
+				KO-Phase
+			</div>
+
 		</p>
 	</div>
 	<h3>Statistik</h3>
 	<div>
 		<p>
-			<div id="ehemaligenverzeichnis" class="menuitem">
-				......
-			</div>	
-			
+			<div id="highscore" class="menuitem">
+				Highscore
+			</div>
+			<div id="highscore" class="menuitem">
+				Graphs
+			</div>
 		</p>
 	</div>
+	
+	<?php
+		}
+	?>
 	<h3>Alles rund um die WM</h3>
 	<div>
 		<p>
-			<div id="ehemaligenverzeichnis" class="menuitem">
-				......
-			</div>	
-				
-			<?php
-if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
-			?>
-			<div id="liste" class="menuitem">
-				Benutzeraccount
+			<div id="kicker" class="menuitem">
+				<a href="http://www.kicker.de" target="_blank">Kicker</a>
 			</div>
-			<?php
-			}
-			?>
 		</p>
 	</div>
 </div>
