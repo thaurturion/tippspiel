@@ -27,7 +27,14 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
 			//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
 			if ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 				//Spalte "pwd" der ersten Zeile gleich übergebenes Kennwort?
-				if ($row['password'] == $_POST['password']) {
+				
+				$encrpwd = md5($_POST['password']);
+				
+				echo $encrpwd;
+				echo $row['password'];
+				
+				if ($row['password'] == $encrpwd) {
+					
 					//...ja! --> Login ok – alles gut!
 					$ok = true;
 					$username = $row['username'];

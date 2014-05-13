@@ -1,5 +1,4 @@
-
-    <table bgcolor="#FFFFFF" align="center">
+<table bgcolor="#FFFFFF" align="center">
 	<tr>
 		<td>Rank</td>
 		<td>Spieler</td>
@@ -25,7 +24,7 @@
 			while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
 				echo '<tr>';
-				echo '<td>' . $count . '</td>' .'<td>' . $row['username'] . '</td>' . '<td class="number">' . $row['point'] . '</td>';
+				echo '<td>' . $count . '</td>' . '<td>' . $row['username'] . '</td>' . '<td class="number">' . $row['point'] . '</td>';
 				echo "</tr>";
 				$count++;
 			}

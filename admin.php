@@ -20,7 +20,7 @@ if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
 </script>
 
 <h1>Hier entsteht die Eingabemaske für die Spielergebnisse.</h1>
-bist du admin? <?php echo $_SESSION['admin']; ?>
+
 <form id="ergebnis" action="handle_ergebnis.php" method="post" onsubmit="return false">
 	<table border="1" style="padding:5px;">
 		<tr>
@@ -42,7 +42,7 @@ bist du admin? <?php echo $_SESSION['admin']; ?>
 		} else {
 			//...ja!
 			//SQL-Anweisung formlieren  (Schritt 3)
-			$sql = "SELECT g.id id, g.datetime datetime, g.scoreA sA, g.scoreB sB, a.team_name ateam, b.team_name bteam FROM game g JOIN team a ON g.teamA = a.ID JOIN team b ON g.teamB = b.ID WHERE a.group='G'";
+			$sql = "SELECT g.id id, g.datetime datetime, g.scoreA sA, g.scoreB sB, a.team_name ateam, b.team_name bteam FROM game g JOIN team a ON g.teamA = a.ID JOIN team b ON g.teamB = b.ID";
 			//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
 			if ($result = $mysqli -> query($sql)) {
 				//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
