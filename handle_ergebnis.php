@@ -12,7 +12,7 @@ if ($mysqli -> error) {
 	//SQL-Anweisung formlieren  (Schritt 3)
 	$allgames = "SELECT id, teamA, teamB FROM game";
 	
-	$mysqli -> query("UPDATE team SET points = NULL");
+	$mysqli -> query("UPDATE team SET points = NULL, scored = NULL, received = NULL");
 
 	if ($result = $mysqli -> query($allgames)) {
 		//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
@@ -30,12 +30,16 @@ if ($mysqli -> error) {
 
 			if ($mysqli -> query($sql) === TRUE) {
 				echo "Datensatz erfolgreich eingefügt";
-				$mysqli -> query("UPDATE team t SET t.scored = coalesce(scored + ".$scoreA.",scored,3) WHERE id = ".$row['teamA']);
+				$mysqli -> query("UPDATE team t SET t.scored = coalesce(scored + ".$scoreA.",scored,".$scoreA."), t.received =  coalesce(received + ".$scoreB.",received,".$scoreB.") WHERE id = ".$row['teamA']);
+				$mysqli -> query("UPDATE team t SET t.scored = coalesce(scored + ".$scoreB.",scored,".$scoreB."), t.received =  coalesce(received + ".$scoreA.",received,".$scoreA.") WHERE id = ".$row['teamB']);
+				
 				
 				if($_POST[$ida] > $_POST[$idb]) {
 					$mysqli -> query("UPDATE team t SET t.points = coalesce(points + 3,points,3) WHERE id = ".$row['teamA']);
+					$mysqli -> query("UPDATE team t SET t.points = coalesce(points + 0,points,0) WHERE id = ".$row['teamB']);
 					echo "TeamA gewinnt";
-				} else if ($_POST[$ida] > $_POST[$idb]) {
+				} else if ($_POST[$idb] > $_POST[$ida]) {
+					$mysqli -> query("UPDATE team t SET t.points = coalesce(points + 0,points,0) WHERE id = ".$row['teamA']);
 					$mysqli -> query("UPDATE team t SET t.points = coalesce(points + 3,points,3) WHERE id = ".$row['teamB']);
 					echo "TeamB gewinnt";
 				} else {

@@ -30,9 +30,6 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
 				
 				$encrpwd = md5($_POST['password']);
 				
-				echo $encrpwd;
-				echo $row['password'];
-				
 				if ($row['password'] == $encrpwd) {
 					
 					//...ja! --> Login ok – alles gut!
