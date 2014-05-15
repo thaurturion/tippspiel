@@ -2,6 +2,20 @@
 session_start();
 ?>
 
+<script type="text/javascript">
+	jQuery(function() {
+		for (var i = 0; i < 200; i++) {
+			jQuery('#insertTip' + i + '').click(function() {
+				jQuery.post('handle_tipp.php?', jQuery('#tipp' + i + '').serialize(), function(data) {
+					jQuery('#content').empty();
+					jQuery('#content').load('handle_tipp.php');
+				}, 'html');
+			});
+		}
+		$('#tabs').tabs();
+	}); 
+</script>
+
 <h1>Willkommen beim WM Tippspiel</h1>
 <div id="tabs">
 	<ul>
@@ -39,17 +53,18 @@ session_start();
 				$group = $row['group'];
 
 				echo "<h1>Spiele</h1>";
+				$time = date("Y-m-d H:i:s", time());
 				//...ja!
 				//SQL-Anweisung formlieren  (Schritt 3)
-				echo $_SESSION["userid"];
-				
-				$sqlMatches = "SELECT g.id id, g.datetime datetime, g.scoreA sA, g.scoreB sB, a.team_name ateam, b.team_name bteam FROM game g 
-				JOIN team a ON g.teamA = a.ID JOIN team b ON g.teamB = b.ID LEFT JOIN tipp ti ON ti.user_ID =".$_SESSION["userid"]." AND ti.gameID = g.id
+
+				$sqlMatches = "SELECT g.id id, g.datetime datetime, g.scoreA sA, g.scoreB sB, a.team_name ateam, 
+				b.team_name bteam, IFNULL(ti.tippScoreA, '') tippScoreA, IFNULL(ti.tippScoreB,'') tippScoreB, ti.ID tippID FROM game g 
+				JOIN team a ON g.teamA = a.ID JOIN team b ON g.teamB = b.ID LEFT JOIN tipp ti ON ti.user_ID =" . $_SESSION["userid"] . " AND ti.game_ID = g.id
 				WHERE a.group LIKE '" . $group . "' ORDER BY g.datetime ASC";
 				//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
 				if ($games = $mysqli -> query($sqlMatches)) {
 					//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
-					echo "<table>";
+					echo '<table border="1">';
 					echo "<tr>
 					<td>Datum</td>
 					<td>Mannschaft A</td>
@@ -58,14 +73,51 @@ session_start();
 					<td>Tipp B</td>
 					<td>Ergebnis</td>
 					<td>Absenden</td>
-					</tr>";
+					</tr>
+					</table>";
+					$count1 = 0;
 					while ($row3 = $games -> fetch_array(MYSQLI_ASSOC)) {
+						echo '<form action="handle_tipp.php" method="post" id="tipp' . $count . '" onsubmit="return false">';
+						echo "<table>";
+						echo '<tr>';
+						
+						$count++;
+						echo '<td>' . $row3['datetime'] . '</td>' . //Datum
+						'<td>' . $row3['ateam'] . '</td>';
 
-						echo '<tr><form action="handle_tipp.php" method="POST">';
-						echo '<td>' . $row3['datetime'] . '</td>' . '<td>' . $row3['ateam'] . '</td>' . '<td><input type="text" 
-						value="' . $row3['sA'] . '" name="' . $row3['id'] . 'a" size="2">' . '</td>' . '<td>' . $row3['bteam'] . '</td>' . '<td><input 
-						type="text" value="' . $row3['sB'] . '" name="' . $row3['id'] . 'b" size="2"></td><td>'. $row3['sA'] .':'. $row3['sB'] .'</td><td><input type="submit" value="Best&auml;tigen"</td>';
-						echo "</form></tr>";
+						$validDate = strtotime($time) < strtotime($row3['datetime']);
+
+						//Name Mannschaft A
+						if ($validDate) {
+							echo '<td><input type="text" value="' . $row3['tippScoreA'] . '" name="' . $row3['id'] . 'a" size="1">';
+							echo '<input type="hidden" value="' . $row3['tippID'] . '" name="tippID">';
+							//tippID
+							echo '<input type="hidden" value="' . $row3['id'] . '" name="gameID"></td>';
+							//gameID
+
+						} else {
+							echo '<td>' . $row3['tippScoreA'] . '</td>';
+							//Tipp für Mannschaft A
+						}
+						echo '<td>' . $row3['bteam'] . '</td>';
+						// Name Mannschaft B
+						if ($validDate) {
+							echo '<td><input type="text" value="' . $row3['tippScoreB'] . '" name="' . $row3['id'] . 'b" size="1"></td>';
+							// Tipp für Mannschaft B
+						} else {
+							echo '<td>' . $row3['tippScoreA'] . '</td>';
+							//Tipp für Mannschaft B
+						}
+						echo '<td>' . $row3['sA'] . ':' . $row3['sB'] . '</td>';
+						// Spielergebnis
+						if ($validDate) {
+							echo '<td><input type="submit" id="insertTip' . $count . '" value="Best&auml;tigen"></td>';
+						}
+						//Bestätigen der Eingabe
+						
+						echo "</tr>";
+						echo "</table>";
+						echo "</form>";
 
 					}
 					echo "</table>";
@@ -88,7 +140,9 @@ session_start();
 					$count = 1;
 					while ($row2 = $table -> fetch_array(MYSQLI_ASSOC)) {
 						echo '<tr>';
-						echo '<td>' . $count . '</td>' . '<td>' . $row2['team_name'] . '</td>' . '<td>' . $row2['scored'] . ':' . $row2['received'] . '</td>' . '<td>' . $row2['difference'] . '</td>' . '<td>' . $row2['points'] . '</td>';
+						echo '<td>' . $count . '</td>' . '<td>' . $row2['team_name'] . '</td>';
+						echo '<td>' . $row2['scored'] . ':' . $row2['received'] . '</td>' . '<td>' . $row2['difference'] . '</td>';
+						echo '<td>' . $row2['points'] . '</td>';
 						echo "</tr>";
 						$count++;
 					}
@@ -113,5 +167,5 @@ session_start();
 	$mysqli -> close();
 		?>
 </div>
+<script type="text/javascript"></script>
 
-<script type="text/javascript">$('#tabs').tabs();</script>

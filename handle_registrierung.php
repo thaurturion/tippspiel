@@ -1,6 +1,6 @@
 <?php
 
-if(    isset($_POST['pwd1']) && isset($_POST['pwd1']) 
+if(    isset($_POST['pwd1']) && !empty($_POST['pwd1']) 
     && isset($_POST['pwd2']) && !empty($_POST['pwd2'])
     && isset($_POST['name']) && !empty($_POST['name'])
     && isset($_POST['email']) && !empty($_POST['email'])

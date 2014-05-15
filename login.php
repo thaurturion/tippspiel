@@ -1,3 +1,6 @@
+<?php
+//TODO: Vor Livegang MD5 Encryption austauschen.
+?>
 <script type="text/javascript">
 	jQuery('#register').click(function() {
 		jQuery('#content').load('register.html');
