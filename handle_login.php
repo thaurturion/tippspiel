@@ -10,6 +10,7 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
 	$ok = false;
 	$admin = 0;
 	$username = '';
+	$userid = 0;
 
 	//Verbindung zur DB aufbauen  (Schritt 2)
 	$mysqli = new mysqli('localhost', 'root', '', 'tippspiel');
@@ -21,7 +22,7 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
 	} else {
 		//...ja!
 		//SQL-Anweisung formlieren  (Schritt 3)
-		$sql = "select password, admin, username from user where username='" . $_POST['username'] . "'";
+		$sql = "select id, password, admin, username from user where username='" . $_POST['username'] . "'";
 		//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
 		if ($result = $mysqli -> query($sql)) {
 			//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
@@ -35,6 +36,7 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
 					//...ja! --> Login ok – alles gut!
 					$ok = true;
 					$username = $row['username'];
+					$userid = $row['id'];
 					if ($row['admin'] == 1) {
 						echo "Du bist Admin!";
 						$admin = 1;
@@ -67,6 +69,7 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
 		//...ja!
 		$_SESSION["login"] = 1;
 		$_SESSION["username"] = $username;
+		$_SESSION["userid"] = $userid;
 		echo "<h2>Login akzeptiert</h2>";
 		
 		if($admin ==  1) {
