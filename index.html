@@ -16,9 +16,10 @@
 		<link rel="icon" href="images/fav.ico"/>
 		<link rel="stylesheet" type="text/css" href="css/layout.css">
 		<link href="css/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/slimmenu.css" type="text/css">
 		<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 		<script src="js/jquery-ui-1.10.2.custom.js"></script>
-
+		
 		<script type="text/javascript">
 			jQuery(function() {
 
@@ -48,7 +49,7 @@
 			}
 
 			function loadNavi() {
-				jQuery('nav').load('nav.php', function() {
+				jQuery('#navigation').load('nav.php', function() {
 
 					//jQuery('#memberonly').hide();
 
@@ -67,18 +68,26 @@
 				});
 			}
 		</script>
+		
+		
+		
+		
 	</head>
 
 	<body>
 
 		<div id="wrapper">
-			<nav></nav>
-			<header></header>
+			<div id="navigation"></div>
+			<header>
+				
+			</header>
 
 			<div id="content"></div>
 			<div id="footer"></div>
 		</div>
-
+	<script src="js/jquery.slimmenu.min.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+			
 	</body>
 
 </html>

@@ -9,64 +9,82 @@ session_start();
 			collapsible : true,
 			active : false
 		});
+	});
+
+	$('#navigation').slimmenu({
+		resizeWidth : '800',
+		collapserTitle : 'Main Menu',
+		animSpeed : 'medium',
+		easingEffect : null,
+		indentChildren : false,
+		childrenIndenter : '&nbsp;'
 	}); 
 </script>
 
-<div id="accordion">
-	<h4>Willkommen</h4>
-	<div>
-		<p>
-			<div id="start" class="menuitem">
-				Startseite
-			</div>
-			<?php
-				if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
-			?>
-			<div id="benutzerverwaltung" class="menuitem">
-				Benutzerverwaltung
-			</div>
-			<?php
-			}
-			?>
-		</p>
-	</div>
-	<?php
-		if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
-	?>
+<ul id="nav" class="slimmenu">
 	
-	<h3>Deine Tipps</h3>
-	<div>
-		<p>
-			<div id="gruppenphase" class="menuitem">
-				Gruppenphase
-			</div>
-			<div id="kophase" class="menuitem">
-				KO-Phase
-			</div>
 
-		</p>
-	</div>
-	<h3>Statistik</h3>
-	<div>
-		<p>
-			<div id="highscore" class="menuitem">
-				Highscore
-			</div>
-			<div id="highscore" class="menuitem">
-				Graphs
-			</div>
-		</p>
-	</div>
+                
+                <li id="start">
+                    <a href="#">Willkommen</a>
+                    <ul style="display: none; height: 90px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+                        <li>
+                            <a href="#">Slim Menu 1.1</a></li>
+                            
+                              <li><a href="#">Slim Menu 1.2</a></li>
+                    </ul>
+                </li>
+                
+                <li id="gruppenphase">
+                	<a href="#">Meine Tipps</a>
+                	<ul style="display: none; height: 90px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+                        <li>
+                            <a href="#">Slim Menu 1.1</a></li>
+                            
+                              <li><a href="#">Slim Menu 1.2</a></li>
+                    </ul>               	
+                </li>
+                                         
+                <li>              	
+                      <a href="#">Statistiken</a>
+                 <ul style="display: none; height: 90px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+                        <li>
+                            <a href="#">Slim Menu 3.1</a></li>
+                            
+                       
+                        <li><a href="#">Slim Menu 3.2</a></li>
+                    </ul>
+               
+                <li>
+                	<a href="#">Alles rund um die WM</a>
+                	<ul style="display: none; height: 90px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+                        <li>
+                            <a href="#">Slim Menu 3.1</a></li>
+                            
+                       
+                        <li><a href="#">Slim Menu 3.2</a></li>
+                    </ul>
+                	
+                	
+                	</li>
+
 	
-	<?php
-		}
-	?>
-	<h3>Alles rund um die WM</h3>
-	<div>
-		<p>
-			<div id="kicker" class="menuitem">
-				<a href="http://www.kicker.de" target="_blank">Kicker</a>
-			</div>
-		</p>
-	</div>
-</div>
+	</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
