@@ -58,17 +58,21 @@ if ($mysqli -> error) {
 				while ($row4 = $res -> fetch_array(MYSQLI_ASSOC)) {
 					if($scoreA == $row4['tippScoreA'] && $scoreB == $row4['tippScoreB']) {
 						$mysqli -> query("UPDATE user SET point = point + 3 WHERE id = " . $row4['uID']);
+						
 					} else if ($scoreA - $scoreB == $row4['tippScoreA'] - $row4['tippScoreB']) {
+						
 						$mysqli -> query("UPDATE user SET point = point + 2 WHERE id = " . $row4['uID']);
 					} else if (($scoreA - $scoreB AND $row4['tippScoreA'] - $row4['tippScoreB']) < 0 OR 
 							($scoreA - $scoreB AND $row4['tippScoreA'] - $row4['tippScoreB']) > 0 OR 
 							($scoreA - $scoreB AND $row4['tippScoreA'] - $row4['tippScoreB'])) {
+								
 						$mysqli -> query("UPDATE user SET point =  point + 1 WHERE id = " . $row4['uID']);
 					} 			
 				}
+				
+				$res -> close();
 			}
 
-			include 'highscore_neuberechnen.php';
 		}
 		$result -> close();
 	} else {
