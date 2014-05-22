@@ -6,11 +6,21 @@
 	//TODO: tipp eintragen, falls es noch keinen Tipp von diesem User zu diesem Spiel gibt
 	//TODO: Tipp updaten, falls es bereits einen Tipp dazu gibt
 	
+	
+	foreach ($_POST as $key => $value) {
+		echo $key.':'.$value.'<br>';
+	}
+	
+	
 	$gameID = $_POST['gameID'];
 	$tippID = $_POST['tippID'];
+	
+	echo $gameID;
+	echo $gameID;
+	
 
-	if(isset($_POST[$gameID.'a']) && !empty($_POST[$gameID.'a'])
-		&& isset($_POST[$gameID.'b'])  && !empty($_POST[$gameID.'b'])) {
+	if(isset($_POST[$gameID.'a'])
+		&& isset($_POST[$gameID.'b']) ) {
 		
 	$ida = $_POST[$gameID.'a'];
 	$idb = $_POST[$gameID.'b'];

@@ -3,17 +3,25 @@ session_start();
 ?>
 
 <script type="text/javascript">
-	jQuery(function() {
-		for (var i = 0; i < 200; i++) {
-			jQuery('#insertTip' + i + '').click(function() {
-				jQuery.post('handle_tipp.php?', jQuery('#tipp' + i + '').serialize(), function(data) {
-					jQuery('#content').empty();
-					jQuery('#content').load('handle_tipp.php');
-				}, 'html');
+	
+	jQuery(function(){
+		for(var i = 0; i < 100; i++) {
+			jQuery('#submitbtn' + i).click(function(){
+				console.log(jQuery('#tipp'+i).serialize());
+				jQuery.post(
+					'handle_tipp.php?',
+					jQuery('#tipp'+i).serialize(),
+					function(data){
+						jQuery('#content').empty();
+						jQuery('#content').append(data);
+					},
+					'html'
+				);
 			});
 		}
 		$('#tabs').tabs();
-	}); 
+		
+	});
 </script>
 
 <h1>Willkommen beim WM Tippspiel</h1>
@@ -64,63 +72,59 @@ session_start();
 				//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
 				if ($games = $mysqli -> query($sqlMatches)) {
 					//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
-					echo '<table border="1">';
-					echo "<tr>
-					<td>Datum</td>
-					<td>Mannschaft A</td>
-					<td>Tipp A</td>
-					<td>Mannschaft B</td>
-					<td>Tipp B</td>
-					<td>Ergebnis</td>
-					<td>Absenden</td>
-					</tr>
-					</table>";
+					
+					
+					
+					
+					echo "<div>
+					Datum
+					Mannschaft A
+					Tipp A
+					Mannschaft B
+					Tipp B
+					Ergebnis
+					Absenden
+					</div><br>";
+					
 					$count1 = 0;
 					while ($row3 = $games -> fetch_array(MYSQLI_ASSOC)) {
-						echo '<form action="handle_tipp.php" method="post" id="tipp' . $count . '" onsubmit="return false">';
-						echo "<table>";
-						echo '<tr>';
-						
-						$count++;
-						echo '<td>' . $row3['datetime'] . '</td>' . //Datum
-						'<td>' . $row3['ateam'] . '</td>';
-
 						$validDate = strtotime($time) < strtotime($row3['datetime']);
+						if ($validDate) {
+							echo '<form action="#" method="post" id="tipp'.$count1.'" onsubmit="return false">';
+						}
+						echo $row3['datetime'] . //Datum
+						 $row3['ateam'];
 
 						//Name Mannschaft A
 						if ($validDate) {
-							echo '<td><input type="text" value="' . $row3['tippScoreA'] . '" name="' . $row3['id'] . 'a" size="1">';
+							echo '<input type="text" value="' . $row3['tippScoreA'] . '" name="' . $row3['id'] . 'a" size="1">';
 							echo '<input type="hidden" value="' . $row3['tippID'] . '" name="tippID">';
 							//tippID
-							echo '<input type="hidden" value="' . $row3['id'] . '" name="gameID"></td>';
+							echo '<input type="hidden" value="' . $row3['id'] . '" name="gameID">';
 							//gameID
 
 						} else {
-							echo '<td>' . $row3['tippScoreA'] . '</td>';
+							echo $row3['tippScoreA'];
 							//Tipp für Mannschaft A
 						}
-						echo '<td>' . $row3['bteam'] . '</td>';
+						echo $row3['bteam'];
 						// Name Mannschaft B
 						if ($validDate) {
-							echo '<td><input type="text" value="' . $row3['tippScoreB'] . '" name="' . $row3['id'] . 'b" size="1"></td>';
+							echo '<input type="text" value="' . $row3['tippScoreB'] . '" name="' . $row3['id'] . 'b" size="1">';
 							// Tipp für Mannschaft B
 						} else {
-							echo '<td>' . $row3['tippScoreA'] . '</td>';
+							echo $row3['tippScoreA'];
 							//Tipp für Mannschaft B
 						}
-						echo '<td>' . $row3['sA'] . ':' . $row3['sB'] . '</td>';
+						echo $row3['sA'] . ':' . $row3['sB'];
 						// Spielergebnis
 						if ($validDate) {
-							echo '<td><input type="submit" id="insertTip' . $count . '" value="Best&auml;tigen"></td>';
+							echo '<input type="button" id="submitbtn'.$count1.'" value="Best&auml;tigen">';
+							$count1++;
 						}
 						//Bestätigen der Eingabe
-						
-						echo "</tr>";
-						echo "</table>";
 						echo "</form>";
-
 					}
-					echo "</table>";
 				}
 				$games -> close();
 				$tabelleSQL = "SELECT team_name, scored, received, (t.scored - t.received) AS difference, IFNULL(t.points, 0) as points, 
