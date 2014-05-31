@@ -1,5 +1,6 @@
 <?php
 //TODO: Vor Livegang MD5 Encryption austauschen.
+//TODO: Trigger für löschung der tipps beim löschen eines spielers einführen
 ?>
 <script type="text/javascript">
 	jQuery('#register').click(function() {

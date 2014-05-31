@@ -7,7 +7,8 @@
 	<script type="text/javascript">
 		jQuery(function(){
 			jQuery("#accordion").accordion({
-				 heightStyle: "content"
+				 heightStyle: "content",
+				 active: 1
 			});
 		});
 	</script>

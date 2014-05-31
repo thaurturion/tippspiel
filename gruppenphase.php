@@ -71,7 +71,7 @@ session_start();
 				$sqlMatches = "SELECT g.id id, g.datetime datetime, g.scoreA sA, g.scoreB sB, a.team_name ateam, 
 				b.team_name bteam, IFNULL(ti.tippScoreA, '') tippScoreA, IFNULL(ti.tippScoreB,'') tippScoreB, ti.ID tippID FROM game g 
 				JOIN team a ON g.teamA = a.ID JOIN team b ON g.teamB = b.ID LEFT JOIN tipp ti ON ti.user_ID =" . $_SESSION["userid"] . " AND ti.game_ID = g.id
-				WHERE a.group LIKE '" . $group . "' ORDER BY g.datetime ASC";
+				WHERE a.group LIKE '" . $group . "' AND b.group LIKE '" . $group . "'  AND g.spieltag <= 3 ORDER BY g.datetime ASC";
 				//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
 				if ($games = $mysqli -> query($sqlMatches)) {
 					//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
