@@ -1,32 +1,28 @@
 <?php
 session_start();
 
-require_once('knockout.class.php');
-
+require_once ('knockout.class.php');
 ?>
 
 <script type="text/javascript">
-	
-		jQuery(function(){
-			jQuery("#accordion").accordion({
-				 heightStyle: "content",
-				 
-			});
+	jQuery(function() {
+		for (var i = 0; i < 100; i++) {
+			doAjax(i);
+		}
+		jQuery("#accordion").accordion({
+			heightStyle : "content",
+
 		});
+	});
 
 	function doAjax(i) {
-		jQuery('#submitbtn'+i).click(function(){
-				console.log(jQuery('#tipp'+i).serialize());
-				jQuery.post(
-					'handle_tipp.php?',
-					jQuery('#tipp'+i).serialize(),
-					function(data){
-						jQuery('#content').empty();
-						jQuery('#content').load('gruppenphase.php');
-					},
-					'html'
-				);
-			});
+		jQuery('#submitbtn' + i).click(function() {
+			console.log(jQuery('#tipp' + i).serialize());
+			jQuery.post('handle_tipp.php?', jQuery('#tipp' + i).serialize(), function(data) {
+				jQuery('#content').empty();
+				jQuery('#content').load('kophase.php');
+			}, 'html');
+		});
 	}
 </script>
 

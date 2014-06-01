@@ -70,7 +70,6 @@ if ($mysqli -> error) {
 			//Set Highscore for Players
 			if ($res = $mysqli -> query($selectedTipp)) {
 				while ($row4 = $res -> fetch_array(MYSQLI_ASSOC)) {
-					echo '2345';
 
 					if ($scoreA == $row4['tippScoreA'] && $scoreB == $row4['tippScoreB']) {
 						$mysqli -> query("UPDATE user SET point = point + 3 WHERE id = " . $row4['uID']);

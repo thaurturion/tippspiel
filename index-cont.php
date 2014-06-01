@@ -2,6 +2,7 @@
 session_start();
 ?>
 
+
 <h1>Willkommen <?php
 if (isset($_SESSION['username'])) {
 	$name = $_SESSION['username'];

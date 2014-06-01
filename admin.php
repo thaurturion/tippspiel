@@ -8,8 +8,9 @@ if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
 		jQuery('#submitbtn').click(function() {
 			jQuery.post('handle_ergebnis.php?', jQuery('#ergebnis').serialize(), function(data) {
 				jQuery('#content').empty();
+				jQuery('#navigation').empty();
 				jQuery('#content').append(data);
-				loadNavi();
+
 				loadFooter();
 				loadHeader();
 			}, 'html');

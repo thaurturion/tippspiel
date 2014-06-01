@@ -14,7 +14,7 @@
 				jQuery('#content').load('index-cont.php');
 				loadNavi();
 				loadFooter();
-				loadHeader();
+				loadHeader();				
 			}, 'html');
 
 		});

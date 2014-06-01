@@ -37,6 +37,7 @@
 				loadFooter();
 				loadNavi();
 				loadAdmin();
+							
 
 			});
 
@@ -51,7 +52,8 @@
 			function loadHeader() {
 				jQuery('header').load('header.php');
 			}
-
+			
+			
 			function loadNavi() {
 				jQuery('#navigation').load('nav.php', function() {
 
@@ -90,7 +92,9 @@
 			<div id="content"></div>
 			<div id="footer"></div>
 		</div>
+	<div id="reloadbox">
 	<script src="js/jquery.slimmenu.min.js"></script>
+	</div>
 	<!--<script src="js/jquery.easing.min.js"></script>-->
 			
 	</body>

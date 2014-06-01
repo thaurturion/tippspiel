@@ -8,10 +8,10 @@ body {
 	background-color: #8699A4;
 	border: 1px solid #B3B2B2;
 	float: left;
-	-moz-border-radius: 5px 10px 5px 10px; /* Firefox */
-	-webkit-border-radius: 5px 10px 5px 10px; /* Chrome, Safari */
-	-khtml-border-radius: 5px 10px 5px 10px; /* Konqueror */
-	border-radius: 5px 10px 5px 10px; /* CSS3 */
+	-moz-border-radius: 10px 10px 10px 10px; /* Firefox */
+	-webkit-border-radius: 10px 10px 10px 10px; /* Chrome, Safari */
+	-khtml-border-radius: 10px 10px 10px 10px; /* Konqueror */
+	border-radius: 10px 10px 10px 10px; /* CSS3 */
 	behavior: url(border-radius.htc); /* Internet Explorer */
 }
 
@@ -19,24 +19,21 @@ header {
 
 	background-color: #62B200;
 	float: left;
-	color: white;	
-	border-bottom:  1px solid #B3B2B2;
-	overflow: auto;
+	width:1024px;
+	height:150px;
+	color: white;
+	border-bottom: 1px solid #B3B2B2;
 }
 
 #logo {
-	width: 400px;
 	float: left;
-	overflow: auto;
+	padding-bottom:0px;
 }
 
 nav {
-	background-image: url(../images/navbg.jpg);
 	float: left;
 	width: 1024px;
-	height: 152px;
 	border-top: 1px solid #B3B2B2;
-	overflow: auto;
 }
 
 #content {
@@ -50,8 +47,7 @@ nav {
 
 #desc {
 	width: 604px;
-	margin-top: 10px;
-	padding-right: 20px;
+	padding-right: 40px;
 	text-align: right;
 	float: left;
 	font-size: 200%;
@@ -73,10 +69,33 @@ nav {
 
 #login {
 	background-color: #B3B2B2;
-	height: 20px;
+	padding-top:5px;
+	height: 25px;
 	width: 100px;
 	text-align: center;
 	float: right;
+	background-color: white;
+	-moz-border-radius: 5px 0px 0px 0px; /* Firefox */
+	-webkit-border-radius: 5px 0px 0px 0px; /* Chrome, Safari */
+	-khtml-border-radius: 5px 0px 0px 0px; /* Konqueror */
+	border-radius: 5px 0px 0px 0px; /* CSS3 */
+	behavior: url(border-radius.htc); /* Internet Explorer */
+}
+
+#start {
+	-moz-border-radius: 10px 0px 0px 0px; /* Firefox */
+	-webkit-border-radius: 10px 0px 0px 0px; /* Chrome, Safari */
+	-khtml-border-radius: 10px 0px 0px 0px; /* Konqueror */
+	border-radius: 10px 0px 0px 0px; /* CSS3 */
+	behavior: url(border-radius.htc); /* Internet Explorer */
+}
+
+#end {
+	-moz-border-radius: 0px 10px 0px 0px; /* Firefox */
+	-webkit-border-radius: 0px 10px 0px 0px; /* Chrome, Safari */
+	-khtml-border-radius: 0px 10px 0px 0px; /* Konqueror */
+	border-radius: 0px 10px 0px 0px; /* CSS3 */
+	behavior: url(border-radius.htc); /* Internet Explorer */
 }
 
 #left {
@@ -101,26 +120,29 @@ h2:active {
 	color: white;
 }
 
+h2 {
+	margin-bottom:25px;
+}
+
 td {
-	padding:5px;
+	padding: 5px;
 }
 
 .menu {
-  background-color: rgb(100%, 100%, 90%);
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(0%, 0%, 60%);
-  padding: 5px;
-  margin: 20px;
+	background-color: rgb(100%, 100%, 90%);
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(0%, 0%, 60%);
+	padding: 5px;
+	margin: 20px;
 }
 
-.menuitem{
-  padding: 2px;
-  border-bottom: 1px solid #ccc;
+.menuitem {
+	padding: 2px;
+	border-bottom: 1px solid #ccc;
 }
 
-.menuitem:hover{
-  color: #f00;
-  cursor: pointer;
+.menuitem:hover {
+	cursor: pointer;
 }
 

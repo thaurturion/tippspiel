@@ -2,9 +2,17 @@
 session_start();
 ?>
 
+<script type="text/javascript">
+	jQuery('#desc').click(function() {
+		jQuery('#content').load('index-cont.php');
+	}); 
+</script>
+
 <div id="logo">
 	<img src="images/logo.jpg" />
 </div>
+
+<span id="desc"><a href="#"><h2>WM-Tippspiel</h2></a></span>
 
 <?php
 if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
@@ -22,4 +30,4 @@ if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
 }
 ?>
 
-<span id="desc"><a href="#"><h2>WM-Tippspiel</h2></a></span>
+
