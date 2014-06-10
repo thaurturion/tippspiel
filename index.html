@@ -37,6 +37,13 @@
 				loadFooter();
 				loadNavi();
 				loadAdmin();
+				$.getScript("js/jquery.slimmenu.min.js", function(data, textStatus, jqxhr) {
+					console.log(textStatus);
+					// Success
+					console.log(jqxhr.status);
+					// 200
+					console.log("Load was performed.");
+				});
 							
 
 			});
@@ -53,14 +60,17 @@
 				jQuery('header').load('header.php');
 			}
 			
-			
 			function loadNavi() {
 				jQuery('#navigation').load('nav.php', function() {
 
 					//jQuery('#memberonly').hide();
 
-					jQuery('#start').click(function() {
+					jQuery('#welcome').click(function() {
 						jQuery('#content').load('index-cont.php');
+					});
+					
+					jQuery('#results').click(function() {
+						jQuery('#content').load('admin.php');
 					});
 
 					jQuery('#gruppenphase').click(function() {
@@ -74,7 +84,10 @@
 					jQuery('#highscore').click(function() {
 						jQuery('#content').load('highscore.php');
 					});
-
+					
+					jQuery('#usermngmt').click(function() {
+						jQuery('#content').load('usermngmt.php');
+					});
 				});
 			}
 		</script>

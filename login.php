@@ -14,7 +14,14 @@
 				jQuery('#content').load('index-cont.php');
 				loadNavi();
 				loadFooter();
-				loadHeader();				
+				loadHeader();
+				$.getScript("js/jquery.slimmenu.min.js", function(data, textStatus, jqxhr) {
+					console.log(textStatus);
+					// Success
+					console.log(jqxhr.status);
+					// 200
+					console.log("Load was performed.");
+				});		
 			}, 'html');
 
 		});

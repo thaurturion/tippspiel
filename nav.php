@@ -16,19 +16,24 @@ session_start();
 <ul id="nav" class="slimmenu">
 
 	<li id="start">
-		<a href="#">Willkommen</a>
+		<a id="welcome" href="#">Willkommen</a>
 		<ul style="display: none; height: 90px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
-			<li>
-				<a href="#">Slim Menu 1.1</a>
+			<?php
+if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
+			?>
+			<li id="results">
+				<a href="#">Spielergebnisse eintragen</a>
 			</li>
-
-			<li>
-				<a href="#">Slim Menu 1.2</a>
+			<li id="usermngmt">
+				<a href="#">Benutzer verwalten</a>
 			</li>
+			<?php
+			}
+			?>
 		</ul>
 	</li>
 	<?php
-	if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
+if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
 	?>
 	<li>
 		<a href="#">Meine Tipps</a>
@@ -53,9 +58,9 @@ session_start();
 				<a href="#">Slim Menu 3.2</a>
 			</li>
 		</ul>
-	<?php
-	}
-	?>
+		<?php
+		}
+		?>
 	<li id="end">
 		<a href="#">Alles rund um die WM</a>
 		<ul style="display: none; height: 90px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">

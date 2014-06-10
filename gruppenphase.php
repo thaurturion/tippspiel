@@ -5,7 +5,7 @@ session_start();
 <script type="text/javascript">
 	
 	jQuery(function(){
-		for(var i = 0; i < 100; i++) {
+		for(var i = 0; i < document.aob.amountOfButtons.value; i++) {
 			doAjax(i);
 		}
 		$('#tabs').tabs();
@@ -13,12 +13,12 @@ session_start();
 	
 	function doAjax(i) {
 		jQuery('#submitbtn'+i).click(function(){
-				console.log(jQuery('#tipp'+i).serialize());
 				jQuery.post(
 					'handle_tipp.php?',
 					jQuery('#tipp'+i).serialize(),
 					function(data){
 						jQuery('#content').empty();
+						jQuery('#content').append(data);
 						jQuery('#content').load('gruppenphase.php');
 					},
 					'html'
@@ -39,6 +39,17 @@ session_start();
 		//...nein!
 		echo('Fehler beim Verbindungsaufbau (' . $mysqli -> errno . '): ' . $mysqli -> error);
 	} else {
+		
+		//Bestimme Anzahl der Button, die mittels JS erzeugt werden sollen und übermittle sie mittels Formular
+		//TODO: evtl. lieber direkt über die URL senden.
+		$amountOfButtons = $mysqli -> query("SELECT DISTINCT COUNT(ID) id FROM game WHERE spieltag <= 3");
+		while($row = $amountOfButtons -> fetch_array(MYSQLI_ASSOC)) {
+			echo '<form name ="aob">';
+			echo '<input type="hidden" name="amountOfButtons" value="'.$row['id'].'" readonly>';
+			echo '</form>';
+		}
+        
+
 		$sql = "SELECT DISTINCT t.group FROM team t ORDER BY t.group ASC";
 		//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
 		if ($result = $mysqli -> query($sql)) {
@@ -60,7 +71,6 @@ session_start();
 			while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 				echo '<div id="gruppe' . strtoupper($row['group']) . '">';
 
-				//TODO: Matches of group + enter of tip
 				$group = $row['group'];
 
 				echo "<h1>Spiele</h1>";
@@ -77,7 +87,7 @@ session_start();
 					//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
 					
 					
-					
+		
 					
 					echo "<div>
 					Datum
@@ -101,9 +111,9 @@ session_start();
 						//Name Mannschaft A
 						if ($validDate) {
 							echo '<input type="text" value="' . $row3['tippScoreA'] . '" name="' . $row3['id'] . 'a" size="1">';
-							echo '<input type="hidden" value="' . $row3['tippID'] . '" name="tippID">';
+							echo '<input type="hidden" value="' . $row3['tippID'] . '" name="tippID" readonly>';
 							//tippID
-							echo '<input type="hidden" value="' . $row3['id'] . '" name="gameID">';
+							echo '<input type="hidden" value="' . $row3['id'] . '" name="gameID" readonly>';
 							//gameID
 
 						} else {

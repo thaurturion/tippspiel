@@ -1,31 +1,11 @@
 <?php
 session_start();
 ?>
-
-
-<h1>Willkommen <?php
-if (isset($_SESSION['username'])) {
-	$name = $_SESSION['username'];
-	echo $name;
-}; ?> beim WM Tippspiel</h1>
-
-<p>
-	TEXT MANU
-	
-</p>
-
-http://jasonweaver.name/lab/flexiblenavigation/
-
-http://docs.dev7studios.com/jquery-plugins/caroufredsel
-
-
-
-<p>
-	Tabelle der aktuellen Teilnehmer
-</p>
-
+<script type="text/javascript">
+</script>
 <table bgcolor="#FFFFFF" align="center">
 	<tr>
+		<td>Rank</td>
 		<td>Spieler</td>
 		<td>Punktestand</td>
 
@@ -33,7 +13,6 @@ http://docs.dev7studios.com/jquery-plugins/caroufredsel
 	<?php
 	//Verbindung zur DB aufbauen  (Schritt 2)
 	$mysqli = new mysqli('localhost', 'root', '', 'tippspiel');
-
 	//Verbindungsaufbau ok?
 	if ($mysqli -> error) {
 		//...nein!
@@ -41,16 +20,19 @@ http://docs.dev7studios.com/jquery-plugins/caroufredsel
 	} else {
 		//...ja!
 		//SQL-Anweisung formlieren  (Schritt 3)
-		$sql = "SELECT * FROM user order by point DESC LIMIT 5"; //TODO: TOP 5 nur anzeigen
+		$sql = "SELECT * FROM user order by point DESC";
 		//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
 		if ($result = $mysqli -> query($sql)) {
 			//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
+			$count = 1;
 			while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
-
+				//$mysqli -> query("DELETE FROM user WHERE namename LIKE '".$row['username']."'"
 				echo '<tr>';
-				echo '<td>' . $row['username'] . '</td>' . '<td class="number">' . $row['point'] . '</td>';
+				echo '<td>' . $count . '</td><td>' . $row['username'] . '</td><td>' . 
+				$row['point'] . '</td><td><a href="" onclick="">
+				Delete</a></td>';
 				echo "</tr>";
-
+				$count++;
 			}
 			$result -> close();
 		} else {
