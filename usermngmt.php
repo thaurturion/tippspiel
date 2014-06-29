@@ -2,6 +2,14 @@
 session_start();
 ?>
 <script type="text/javascript">
+function onClickEvent(userID) {
+			
+			jQuery.post('delete.php?', {user:userID}, function(data) {
+				jQuery('#content').append(data);
+				
+			}, 'html');
+}  
+
 </script>
 <table bgcolor="#FFFFFF" align="center">
 	<tr>
@@ -27,11 +35,11 @@ session_start();
 			$count = 1;
 			while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 				//$mysqli -> query("DELETE FROM user WHERE namename LIKE '".$row['username']."'"
-				echo '<tr>';
-				echo '<td>' . $count . '</td><td>' . $row['username'] . '</td><td>' . 
-				$row['point'] . '</td><td><a href="" onclick="">
-				Delete</a></td>';
-				echo "</tr>";
+				?><tr>
+				<td><?=$count ?></td><td><?= $row['username'] ?></td><td><?= $row['point'] ?></td><td><div id="deletion">
+				<input type="button" value="Delete" onclick="onClickEvent(<?=$row['ID']?>);"/></div></td>
+				</tr>
+				<?php
 				$count++;
 			}
 			$result -> close();
