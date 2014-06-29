@@ -5,7 +5,7 @@ session_start();
 function onClickEvent(userID) {
 			
 			jQuery.post('delete.php?', {user:userID}, function(data) {
-				jQuery('#content').append(data);
+				jQuery('#content').load("");
 				
 			}, 'html');
 }  
@@ -34,7 +34,6 @@ function onClickEvent(userID) {
 			//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
 			$count = 1;
 			while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
-				//$mysqli -> query("DELETE FROM user WHERE namename LIKE '".$row['username']."'"
 				?><tr>
 				<td><?=$count ?></td><td><?= $row['username'] ?></td><td><?= $row['point'] ?></td><td><div id="deletion">
 				<input type="button" value="Delete" onclick="onClickEvent(<?=$row['ID']?>);"/></div></td>
