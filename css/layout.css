@@ -68,13 +68,12 @@ nav {
 }
 
 #login {
-	background-color: #B3B2B2;
+	background-color: #8699A4;
 	padding-top:5px;
 	height: 25px;
 	width: 100px;
 	text-align: center;
 	float: right;
-	background-color: white;
 	-moz-border-radius: 5px 0px 0px 0px; /* Firefox */
 	-webkit-border-radius: 5px 0px 0px 0px; /* Chrome, Safari */
 	-khtml-border-radius: 5px 0px 0px 0px; /* Konqueror */

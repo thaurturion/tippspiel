@@ -18,23 +18,17 @@ session_start();
 	<li id="start">
 		<a id="welcome" href="#">Willkommen</a>
 		<ul style="display: none; height: 90px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
-			<?php
-if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
-			?>
+
 			<li id="results">
 				<a href="#">Spielergebnisse eintragen</a>
 			</li>
 			<li id="usermngmt">
 				<a href="#">Benutzer verwalten</a>
 			</li>
-			<?php
-			}
-			?>
+
 		</ul>
 	</li>
-	<?php
-		if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
-	?>
+
 	
 	<li id="p1">
 		<a href="#">Meine Tipps</a>
@@ -53,23 +47,17 @@ if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
 			<li id="highscore">
 				<a href="#">Highscore</a>
 			</li>
-
-			<li>
-				<a href="#">Slim Menu 3.2</a>
-			</li>
 		</ul>
-		<?php
-			}
-		?>
+
 	<li id="end">
 		<a href="#">Alles rund um die WM</a>
 		<ul style="display: none; height: 90px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
 			<li>
-				<a href="#">Slim Menu 3.1</a>
+				<a href="http://www.kicker.de" target="_blanc">Kicker</a>
 			</li>
 
 			<li>
-				<a href="#">Slim Menu 3.2</a>
+				<a href="http://www.bundesliga.de" target="_blanc">Bundesliga</a>
 			</li>
 		</ul>
 

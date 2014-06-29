@@ -10,20 +10,10 @@ if (isset($_SESSION['username'])) {
 }; ?> beim WM Tippspiel</h1>
 
 <p>
-	TEXT MANU
-	
+Herzlich Willkommen zum interaktiven Tippspiel der FIFA Fußball Weltmeisterschaft 2014 in Brasilien dem Herzen des Fußballs. Auf unserer Seite findest du den ultimativen Tippspaß mit deinen Freunden, Arbeitskollegen oder deiner Familie. Des Weiteren haben wir für euch zahlreiche Statistiken, Fakten und Infos rund um die WM auf unserer Seite aufbereitet. 
+
+Beweise dein Fußballverstand und werde zum Tippweltmeister der FIFA Fußball Weltmeisterschaft 2014!
 </p>
-
-http://jasonweaver.name/lab/flexiblenavigation/
-
-http://docs.dev7studios.com/jquery-plugins/caroufredsel
-
-
-
-<p>
-	Tabelle der aktuellen Teilnehmer
-</p>
-
 <table bgcolor="#FFFFFF" align="center">
 	<tr>
 		<td>Spieler</td>

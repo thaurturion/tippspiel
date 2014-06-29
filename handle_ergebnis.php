@@ -1,7 +1,5 @@
 <?php
 
-//TODO: Auslagerung der SQL Statements an ext. Klassen
-
 //Verbindung zur DB aufbauen  (Schritt 2)
 $mysqli = new mysqli('localhost', 'root', '', 'tippspiel');
 

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
 
 <html>
@@ -82,7 +85,34 @@
 
 					jQuery('#usermngmt').click(function() {
 						jQuery('#content').load('usermngmt.php');
+					});				
+					<?php
+						if($_SESSION["admin"] == 0){
+					?>
+					jQuery(function() {
+						jQuery('#p1').hide();
+						jQuery('#p2').hide();
+						jQuery('#results').hide();
+						jQuery('#usermngmt').hide();
 					});
+					<?php
+						} elseif (isset($_SESSION["admin"]) && $_SESSION["admin"] == 0) {
+					?>
+							jQuery('#p1').show();
+							jQuery('#p2').show();
+							jQuery('#results').hide();
+							jQuery('#usermngmt').hide();
+					<?php
+						} elseif (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
+					?>
+							jQuery('#p1').show();
+							jQuery('#p2').show();
+							jQuery('#results').show();
+							jQuery('#usermngmt').show();
+					<?php
+						}
+					?>
+
 				});
 
 			};
@@ -103,6 +133,5 @@
 		</div>
 		<script src="js/jquery.slimmenu.min.js"></script>
 	</body>
-
 </html>
 

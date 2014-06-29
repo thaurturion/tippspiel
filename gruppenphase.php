@@ -12,14 +12,14 @@ session_start();
 	});
 	
 	function doAjax(i) {
-		jQuery('#submitbtn'+i).click(function(){
+		jQuery('#submitbtn' + i).click(function(){
 				jQuery.post(
 					'handle_tipp.php?',
-					jQuery('#tipp'+i).serialize(),
+					jQuery('#tipp' + i).serialize(),
 					function(data){
 						jQuery('#content').empty();
 						jQuery('#content').append(data);
-						jQuery('#content').load('gruppenphase.php');
+						//jQuery('#content').load('gruppenphase.php');
 					},
 					'html'
 				);

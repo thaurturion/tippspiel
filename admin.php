@@ -15,7 +15,7 @@ if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
 	}); 
 </script>
 
-<h1>Hier entsteht die Eingabemaske für die Spielergebnisse.</h1>
+<h1>Eingabemaske für die Spielergebnisse</h1>
 
 <form id="ergebnis" action="handle_ergebnis.php" method="post" onsubmit="return false">
 	<table border="1" style="padding:5px;">
