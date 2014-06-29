@@ -12,16 +12,10 @@
 			jQuery.post('handle_login.php?', jQuery('#logindaten').serialize(), function(data) {
 				jQuery('#content').empty();
 				jQuery('#content').load('index-cont.php');
-				loadNavi();
+				jQuery('#p1').show();
+				jQuery('#p2').show();
 				loadFooter();
 				loadHeader();
-				$.getScript("js/jquery.slimmenu.min.js", function(data, textStatus, jqxhr) {
-					console.log(textStatus);
-					// Success
-					console.log(jqxhr.status);
-					// 200
-					console.log("Load was performed.");
-				});		
 			}, 'html');
 
 		});

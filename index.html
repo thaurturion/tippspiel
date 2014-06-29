@@ -6,29 +6,34 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
+
 		<!-- Cache nicht anlegen -->
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="pragma" content="no-cache">
-		<meta http-equiv="expires" content="0">		
+		<meta http-equiv="expires" content="0">
 		<!-- Ende Cache nicht anlegen -->
-		
+
 		<meta name="description" content="WM-Tippspiel">
 		<meta name="author" content="Fabian Bode, Manuel Digeser, Marc Kaltenbach">
 
+		<!--FAVICON-->
 		<link rel="shortcut icon" href="images/fav.ico"/>
 		<link rel="icon" href="images/fav.ico"/>
+
+		<!--CSS files-->
 		<link rel="stylesheet" type="text/css" href="css/layout.css">
 		<link href="css/ui-lightness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/slimmenu.css" type="text/css">
+
+		<!--Javascript Files-->
 		<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 		<script src="js/jquery-ui-1.10.2.custom.js"></script>
-		
+
 		<script type="text/javascript">
 			jQuery(function() {
 				//Kein AJAX Cache.
-				$.ajaxSetup({
-					cache : false
+				jQuery.ajaxSetup({
+					cache : false,
 				});
 
 				loadHeader();
@@ -37,14 +42,6 @@
 				loadFooter();
 				loadNavi();
 				loadAdmin();
-				$.getScript("js/jquery.slimmenu.min.js", function(data, textStatus, jqxhr) {
-					console.log(textStatus);
-					// Success
-					console.log(jqxhr.status);
-					// 200
-					console.log("Load was performed.");
-				});
-							
 
 			});
 
@@ -59,16 +56,14 @@
 			function loadHeader() {
 				jQuery('header').load('header.php');
 			}
-			
+
 			function loadNavi() {
 				jQuery('#navigation').load('nav.php', function() {
-
-					//jQuery('#memberonly').hide();
 
 					jQuery('#welcome').click(function() {
 						jQuery('#content').load('index-cont.php');
 					});
-					
+
 					jQuery('#results').click(function() {
 						jQuery('#content').load('admin.php');
 					});
@@ -76,7 +71,7 @@
 					jQuery('#gruppenphase').click(function() {
 						jQuery('#content').load('gruppenphase.php');
 					});
-					
+
 					jQuery('#kophase').click(function() {
 						jQuery('#content').load('kophase.php');
 					});
@@ -84,12 +79,13 @@
 					jQuery('#highscore').click(function() {
 						jQuery('#content').load('highscore.php');
 					});
-					
+
 					jQuery('#usermngmt').click(function() {
 						jQuery('#content').load('usermngmt.php');
 					});
 				});
-			}
+
+			};
 		</script>
 
 	</head>
@@ -99,17 +95,13 @@
 		<div id="wrapper">
 			<div id="navigation"></div>
 			<header>
-				
-			</header>
 
+			</header>
 			<div id="content"></div>
 			<div id="footer"></div>
+
 		</div>
-	<div id="reloadbox">
-	<script src="js/jquery.slimmenu.min.js"></script>
-	</div>
-	<!--<script src="js/jquery.easing.min.js"></script>-->
-			
+		<script src="js/jquery.slimmenu.min.js"></script>
 	</body>
 
 </html>

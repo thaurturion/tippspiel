@@ -33,9 +33,10 @@ if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
 		</ul>
 	</li>
 	<?php
-if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
+		if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
 	?>
-	<li>
+	
+	<li id="p1">
 		<a href="#">Meine Tipps</a>
 		<ul style="display: none; height: 90px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
 			<li id="gruppenphase">
@@ -46,8 +47,7 @@ if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
 			</li>
 		</ul>
 	</li>
-
-	<li>
+	<li id="p2">
 		<a href="#">Statistiken</a>
 		<ul style="display: none; height: 90px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
 			<li id="highscore">
@@ -59,7 +59,7 @@ if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
 			</li>
 		</ul>
 		<?php
-		}
+			}
 		?>
 	<li id="end">
 		<a href="#">Alles rund um die WM</a>

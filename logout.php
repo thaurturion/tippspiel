@@ -17,7 +17,8 @@
 	
 	jQuery(function(){
 		loadHeader();
-		loadNavi();
+		jQuery('#p1').hide();
+		jQuery('#p2').hide();
 		loadFooter();
 	});
 </script>
