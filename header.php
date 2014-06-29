@@ -2,6 +2,11 @@
 session_start();
 ?>
 
+<script type="text/javascript">
+	jQuery('#desc').click(function() {
+		jQuery('#content').load('index-cont.php');
+	}); 
+</script>
 
 <div id="logo">
 	<img src="images/logo.jpg" />
