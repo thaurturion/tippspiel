@@ -1,6 +1,12 @@
 <?php
 session_start();
+
+if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
+	
 ?>
+
+
+
 <script type="text/javascript">
 function onClickEvent(userID) {
 			
@@ -11,6 +17,9 @@ function onClickEvent(userID) {
 }  
 
 </script>
+
+<h1>Seite zum Löschen von Spielern</h1>
+
 <table bgcolor="#FFFFFF" align="center">
 	<tr>
 		<td>Rank</td>
@@ -50,3 +59,12 @@ function onClickEvent(userID) {
 	$mysqli -> close();
 	?>
 </table>
+<?php
+} else {
+?>
+	<script type="text/javascript">	
+		jQuery('#content').load("index-cont.php");
+	</script>
+<?php
+}
+?>

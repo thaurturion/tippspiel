@@ -27,13 +27,14 @@ if (isset($_POST[$gameID . 'a']) && isset($_POST[$gameID . 'b'])) {
 		//...nein!
 		echo('Fehler beim Verbindungsaufbau (' . $mysqli -> errno . '): ' . $mysqli -> error);
 	} else {
-		$checkDate = $mysqli -> query("SELECT datetime FROM game WHERE id =$gameID") -> fetch_array(MYSQLI_ASSOC);
+		$checkDate = $mysqli -> query("SELECT datetime FROM game WHERE id =".$gameID) -> fetch_array(MYSQLI_ASSOC);
 		
 		if (strtotime($checkDate['datetime']) >= date("Y-m-d H:i:s", time())) {
 			echo $checkDate['datetime'];	
-				
+			echo $_SESSION["userid"];	
 			if ($tippID != NULL) {
-				$sql = "UPDATE tipp SET tippScoreA = " . $ida . ", tippScoreB = " . $idb . " WHERE game_ID = " . $gameID . " AND user_ID =" . $_SESSION["userid"] . " AND id=" . $tippID;
+				$sql = "UPDATE tipp SET tippScoreA = " . $ida . ", tippScoreB = " . $idb . " WHERE game_ID = " . $gameID . " AND 
+				user_ID =" . $_SESSION["userid"] . " AND id=" . $tippID;
 			} else if ($tippID == NULL AND $ida != '' AND $idb != '') {
 				$sql = "INSERT INTO tipp (game_ID, user_ID, tippScoreA, tippScoreB) 
 			values (" . $gameID . ", " . $_SESSION["userid"] . ", " . $ida . ", " . $idb . ")";

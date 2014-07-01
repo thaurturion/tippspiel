@@ -20,15 +20,15 @@ header {
 
 	background-color: #62B200;
 	float: left;
-	width:1024px;
-	height:150px;
+	width: 1024px;
+	height: 150px;
 	color: white;
 	border-bottom: 1px solid #B3B2B2;
 }
 
 #logo {
 	float: left;
-	padding-bottom:0px;
+	padding-bottom: 0px;
 }
 
 nav {
@@ -63,14 +63,14 @@ nav {
 	width: 1014px;
 	font-size: 10px;
 	float: left;
-	padding-top:8px;
+	padding-top: 8px;
 	padding-left: 15px;
 	padding-bottom: 5px;
 }
 
 #login {
 	background-color: #8699A4;
-	padding-top:5px;
+	padding-top: 5px;
 	height: 25px;
 	width: 100px;
 	text-align: center;
@@ -83,6 +83,7 @@ nav {
 }
 
 #start {
+	padding-left:-100px;
 	-moz-border-radius: 10px 0px 0px 0px; /* Firefox */
 	-webkit-border-radius: 10px 0px 0px 0px; /* Chrome, Safari */
 	-khtml-border-radius: 10px 0px 0px 0px; /* Konqueror */
@@ -121,7 +122,7 @@ h2:active {
 }
 
 h2 {
-	margin-bottom:31px;
+	margin-bottom: 31px;
 }
 
 td {
@@ -146,42 +147,100 @@ td {
 	cursor: pointer;
 }
 
-.tabelleturnierteilnehmer{
-	
+.tabelleturnierteilnehmer {
+
 	text-align: center;
 	text-decoration: underline;
 	font-size: 140%;
 }
 
-.tabelleteilnehmer{
-	  border: 1px solid black;
-  	border-collapse: collapse;
-  	text-align: center;
-  	background-color: #C2CCD3
+.tabelleteilnehmer {
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+	background-color: #C2CCD3
 }
 
-.ueberschrifttabelle{
+.ueberschrifttabelle {
 	font-size: 100%;
 	font-weight: bold;
 }
-	
-.spiele {
+
+.spiele1 {
 	float: left;
-	margin-right: 50px;
+	height: 40px;
+	width: 170px;
+	border: 1px solid gray;
+	text-align: center;
+	margin: 0px 0px 2px 2px;
+	padding-top: 5px;
+}
+.spiele2 {
+	float: left;
+	height: 40px;
+	width: 146px;
+	border: 1px solid gray;
+	text-align: center;
+	margin: 0px 0px 2px 2px;
+	padding-top: 5px;
+}
+.spiele3 {
+	float: left;
+	height: 40px;
+	width: 55px;
+	border: 1px solid gray;
+	text-align: center;
+	margin: 0px 0px 2px 2px;
+	padding-top: 5px;
+}
+.spiele4 {
+	float: left;
+	height: 40px;
+	width: 146px;
+	border: 1px solid gray;
+	text-align: center;
+	margin: 0px 0px 2px 2px;
+	padding-top: 5px;
+}
+.spiele5 {
+	float: left;
+	height: 40px;
+	width: 55px;
+	border: 1px solid gray;
+	text-align: center;
+	margin: 0px 0px 2px 2px;
+	padding-top: 5px;
+}
+
+.spiele6 {
+	float: left;
+	height: 40px;
+	width: 90px;
+	border: 1px solid gray;
+	text-align: center;
+	margin: 0px 0px 2px 2px;
+	padding-top: 5px;
+}
+.spiele7 {
+	float: left;
+	height: 40px;
+	width: 100px;
+	border: 1px solid gray;
+	text-align: center;
+	margin: 0px 0px 2px 2px;
+	padding-top: 5px;
 }
 
 #login a:active {
-	color:white;
-	text-decoration:none;
+	color: white;
+	text-decoration: none;
 }
 #login a:visited {
-	color:black;
-	text-decoration:none;
-
+	color: black;
+	text-decoration: none;
 }
 #login a:hover {
-	color:white;
-	text-decoration:none;
-	
+	color: white;
+	text-decoration: none;
 }
 

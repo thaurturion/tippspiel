@@ -1,8 +1,24 @@
-<table bgcolor="#FFFFFF" align="center">
+<div class="startseite">
+
+Wer ist aktuell der Chef unter den Tippern und wer ist der größte Lappen? Hier siehst du den aktuellen Highscore:	
+	
+<div>
+
+<br>
+
+<div class="tabelleturnierteilnehmer">
+
+Aktuelle Highscoretabelle:
+
+</div>
+
+<br>
+
+<table bgcolor="#FFFFFF" align="center" class="tabelleteilnehmer">
 	<tr>
-		<td>Rank</td>
-		<td>Spieler</td>
-		<td>Punktestand</td>
+		<td class="ueberschrifttabelle">  Rank</td>
+		<td class="ueberschrifttabelle">  Spieler</td>
+		<td class="ueberschrifttabelle"> Punktestand</td>
 
 	</tr>
 	<?php
@@ -24,7 +40,7 @@
 			while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
 				echo '<tr>';
-				echo '<td>' . $count . '</td>' . '<td>' . $row['username'] . '</td>' . '<td class="number">' . $row['point'] . '</td>';
+				echo '<td class="tabelleteilnehmer">' . $count . '</td>' . '<td class="tabelleteilnehmer">' . $row['username'] . '</td>' . '<td class="tabelleteilnehmer">' . $row['point'] . '</td>';
 				echo "</tr>";
 				$count++;
 			}

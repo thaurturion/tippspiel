@@ -26,7 +26,7 @@ require_once ('knockout.class.php');
 	}
 </script>
 
-<h1>Willkommen bei der KO Phase</h1>
+<h1>Willkommen in der KO-Phase</h1>
 <div id="accordion">
 	<h3>Achtelfinale</h3>
 	

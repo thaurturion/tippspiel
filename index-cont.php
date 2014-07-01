@@ -14,10 +14,13 @@ Herzlich Willkommen zum interaktiven Tippspiel der FIFA Fußball Weltmeisterscha
 
 Beweise dein Fußballverstand und werde zum Tippweltmeister der FIFA Fußball Weltmeisterschaft 2014!
 </p>
-<table bgcolor="#FFFFFF" align="center">
+<h1>Die Fünf Besten Tipper</h1>
+
+<table bgcolor="#FFFFFF" align="center" class="tabelleteilnehmer">
 	<tr>
-		<td>Spieler</td>
-		<td>Punktestand</td>
+		<td class="ueberschrifttabelle">  Rank</td>
+		<td class="ueberschrifttabelle">  Spieler</td>
+		<td class="ueberschrifttabelle"> Punktestand</td>
 
 	</tr>
 	<?php
@@ -31,16 +34,17 @@ Beweise dein Fußballverstand und werde zum Tippweltmeister der FIFA Fußball We
 	} else {
 		//...ja!
 		//SQL-Anweisung formlieren  (Schritt 3)
-		$sql = "SELECT * FROM user order by point DESC LIMIT 5"; //TODO: TOP 5 nur anzeigen
+		$sql = "SELECT * FROM user order by point DESC LIMIT 5";
 		//SQL-Anweisung absetzen und Ergebnistabelle in $result merken
 		if ($result = $mysqli -> query($sql)) {
 			//Ergebnistabelle auswerten, dazu erste Zeile in $row speichern  (Schritt 4)
+			$count = 1;
 			while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
 
 				echo '<tr>';
-				echo '<td>' . $row['username'] . '</td>' . '<td class="number">' . $row['point'] . '</td>';
+				echo '<td class="tabelleteilnehmer">' . $count . '</td>' . '<td class="tabelleteilnehmer">' . $row['username'] . '</td>' . '<td class="tabelleteilnehmer">' . $row['point'] . '</td>';
 				echo "</tr>";
-
+				$count++;
 			}
 			$result -> close();
 		} else {

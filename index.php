@@ -36,7 +36,7 @@ session_start();
 			jQuery(function() {
 				//Kein AJAX Cache.
 				jQuery.ajaxSetup({
-					cache : false,
+					cache : false
 				});
 
 				loadHeader();
@@ -86,7 +86,7 @@ session_start();
 					jQuery('#usermngmt').click(function() {
 						jQuery('#content').load('usermngmt.php');
 					});	
-					setTimeout(customize(),1000);
+					setTimeout(customize(), 3000);
 				});
 
 			};

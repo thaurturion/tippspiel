@@ -20,6 +20,7 @@ session_start();
 						//jQuery('#content').empty();
 						//jQuery('#content').append(data);
 						jQuery('#content').load('gruppenphase.php');
+						//setTimeout(customize(), 3000);
 					},
 					'html'
 				);
@@ -78,7 +79,7 @@ session_start();
 				//...ja!
 				//SQL-Anweisung formlieren  (Schritt 3)
 
-				$sqlMatches = "SELECT g.id id, g.datetime datetime, g.scoreA sA, g.scoreB sB, a.team_name ateam, 
+				$sqlMatches = "SELECT g.id id, g.datetime datetime, IFNULL(g.scoreA, 'N/A') sA, IFNULL(g.scoreB, 'N/A') sB, a.team_name ateam, 
 				b.team_name bteam, IFNULL(ti.tippScoreA, '') tippScoreA, IFNULL(ti.tippScoreB,'') tippScoreB, ti.ID tippID FROM game g 
 				JOIN team a ON g.teamA = a.ID JOIN team b ON g.teamB = b.ID LEFT JOIN tipp ti ON ti.user_ID =" . $_SESSION["userid"] . " AND ti.game_ID = g.id
 				WHERE a.group LIKE '" . $group . "' AND b.group LIKE '" . $group . "'  AND g.spieltag <= 3 ORDER BY g.datetime ASC";
@@ -88,15 +89,16 @@ session_start();
 					
 					
 		
-					
+					//Die Tabelle muss über DIVS formatiert werden, da tables nicht mit innenliegenden Formularen klarkommt.
 					echo ' <div class="spiele1"> Datum </div> 
+					<div class="spiele3"></div>
 					<div class="spiele2"> Mannschaft A </div> 
 					 <div class="spiele3"> Tipp A </div>
+					 <div class="spiele3"></div>
 					 <div class="spiele4"> Mannschaft B </div>
 					<div class="spiele5"> Tipp B </div>
 					<div class="spiele6"> Ergebnis </div>
-					<div class="spiele7"> Absenden</div>
-					<br>';
+					<div class="spiele7"> Absenden</div>';
 					
 					$count1 = 0;
 					while ($row3 = $games -> fetch_array(MYSQLI_ASSOC)) {
@@ -104,10 +106,12 @@ session_start();
 						if ($validDate) {
 							echo '<form action="#" method="post" id="tipp'.$count1.'" onsubmit="return false">';
 						}
-						echo $row3['datetime'].'<img src="images/flags/'.$row3['ateam'].'.png" width="50px height="50px">'.$row3['ateam'];  //Datum, Flagge und Mannschaft
+						echo '<div class="spiele1">'.$row3['datetime'].'</div><div class="spiele3"><img src="images/flags/'.$row3['ateam'].
+						'.png" width="50px height="50px"></div><div class="spiele2">'.$row3['ateam'].'</div>';  //Datum, Flagge und Mannschaft
 						 
 
 						//Name Mannschaft A
+						echo '<div class="spiele3">';
 						if ($validDate) {
 							echo '<input type="text" value="' . $row3['tippScoreA'] . '" name="' . $row3['id'] . 'a" size="1">';
 							echo '<input type="hidden" value="' . $row3['tippID'] . '" name="tippID" readonly>';
@@ -119,8 +123,10 @@ session_start();
 							echo $row3['tippScoreA'];
 							//Tipp für Mannschaft A
 						}
-						echo '<img src="images/flags/'.$row3['bteam'].'.png" width="50px height="50px">'.$row3['bteam'];
+						echo '</div><div class="spiele3"><img src="images/flags/'.$row3['bteam'].'.png" width="50px height="50px"></div>
+						<div class="spiele4">'.$row3['bteam'].'</div>';
 						// Name Mannschaft B
+						echo '<div class="spiele5">';
 						if ($validDate) {
 							echo '<input type="text" value="' . $row3['tippScoreB'] . '" name="' . $row3['id'] . 'b" size="1">';
 							// Tipp für Mannschaft B
@@ -128,22 +134,25 @@ session_start();
 							echo $row3['tippScoreA'];
 							//Tipp für Mannschaft B
 						}
-						echo $row3['sA'] . ':' . $row3['sB'];
+						echo '</div>';
+						echo '<div class="spiele6">'.$row3['sA'] . ':' . $row3['sB'].'</div>';
 						// Spielergebnis
+						echo '<div class="spiele7">';
 						if ($validDate) {
 							echo '<input type="button" id="submitbtn'.$count1.'" value="OK!">';
 							$count1++;
+							echo "</form>";
 						}
-						//Bestätigen der Eingabe
-						echo "</form>";
+						echo '</div>';						
 					}
 				}
 				$games -> close();
+				
 				$tabelleSQL = "SELECT team_name, scored, received, (t.scored - t.received) AS difference, IFNULL(t.points, 0) as points, 
 					t.group FROM team t WHERE t.group LIKE '" . $group . "' ORDER BY points DESC";
 				//Einfügen der Tabelle der jeweiligen Gruppe
 				if ($table = $mysqli -> query($tabelleSQL)) {
-					echo "<h1>Tabelle</h1>";
+					echo '<h1>Tabelle</h1>';
 					echo '<table bgcolor="#FFFFFF" align="center">
 								<tr>
 								<td>Rank</td>
