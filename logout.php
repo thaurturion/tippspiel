@@ -19,6 +19,8 @@
 		loadHeader();
 		jQuery('#p1').hide();
 		jQuery('#p2').hide();
+		jQuery('#results').hide();
+		jQuery('#usermngmt').hide();
 		loadFooter();
 	});
 </script>

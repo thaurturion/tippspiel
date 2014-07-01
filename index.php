@@ -85,36 +85,31 @@ session_start();
 
 					jQuery('#usermngmt').click(function() {
 						jQuery('#content').load('usermngmt.php');
-					});				
+					});	
+					setTimeout(customize(),1000);
+				});
+
+			};
+			
+			function customize() {
+					jQuery('#p1').hide();
+					jQuery('#p2').hide();
+					jQuery('#results').hide();
+					jQuery('#usermngmt').hide();
 					<?php
-						if($_SESSION["admin"] == 0){
-					?>
-					jQuery(function() {
-						jQuery('#p1').hide();
-						jQuery('#p2').hide();
-						jQuery('#results').hide();
-						jQuery('#usermngmt').hide();
-					});
-					<?php
-						} elseif (isset($_SESSION["admin"]) && $_SESSION["admin"] == 0) {
-					?>
-							jQuery('#p1').show();
-							jQuery('#p2').show();
-							jQuery('#results').hide();
-							jQuery('#usermngmt').hide();
-					<?php
-						} elseif (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1) {
+						if(isset($_SESSION["login"]) && $_SESSION["login"] == 1){
 					?>
 							jQuery('#p1').show();
 							jQuery('#p2').show();
+					<?php
+						}
+						if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
+					?>
 							jQuery('#results').show();
 							jQuery('#usermngmt').show();
 					<?php
 						}
 					?>
-
-				});
-
 			};
 		</script>
 

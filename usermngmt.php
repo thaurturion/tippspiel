@@ -5,7 +5,7 @@ session_start();
 function onClickEvent(userID) {
 			
 			jQuery.post('delete.php?', {user:userID}, function(data) {
-				jQuery('#content').load("");
+				jQuery('#content').load("usermngmnt.php");
 				
 			}, 'html');
 }  

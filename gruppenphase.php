@@ -17,9 +17,9 @@ session_start();
 					'handle_tipp.php?',
 					jQuery('#tipp' + i).serialize(),
 					function(data){
-						jQuery('#content').empty();
-						jQuery('#content').append(data);
-						//jQuery('#content').load('gruppenphase.php');
+						//jQuery('#content').empty();
+						//jQuery('#content').append(data);
+						jQuery('#content').load('gruppenphase.php');
 					},
 					'html'
 				);
@@ -41,7 +41,7 @@ session_start();
 	} else {
 		
 		//Bestimme Anzahl der Button, die mittels JS erzeugt werden sollen und übermittle sie mittels Formular
-		//TODO: evtl. lieber direkt über die URL senden.
+		//TODO: evtl. lieber direkt über die URL/post senden.
 		$amountOfButtons = $mysqli -> query("SELECT DISTINCT COUNT(ID) id FROM game WHERE spieltag <= 3");
 		while($row = $amountOfButtons -> fetch_array(MYSQLI_ASSOC)) {
 			echo '<form name ="aob">';
@@ -89,24 +89,23 @@ session_start();
 					
 		
 					
-					echo "<div>
-					Datum
-					Mannschaft A
-					Tipp A
-					Mannschaft B
-					Tipp B
-					Ergebnis
-					Absenden
-					</div><br>";
+					echo ' <div class="spiele1"> Datum </div> 
+					<div class="spiele2"> Mannschaft A </div> 
+					 <div class="spiele3"> Tipp A </div>
+					 <div class="spiele4"> Mannschaft B </div>
+					<div class="spiele5"> Tipp B </div>
+					<div class="spiele6"> Ergebnis </div>
+					<div class="spiele7"> Absenden</div>
+					<br>';
 					
 					$count1 = 0;
 					while ($row3 = $games -> fetch_array(MYSQLI_ASSOC)) {
-						$validDate = strtotime($time) < strtotime($row3['datetime']);
+						$validDate = strtotime($time) < strtotime($row3['datetime']); //Boolscher Wert, der anzeigt, ob das Spiel bereits stattgefunden hat
 						if ($validDate) {
 							echo '<form action="#" method="post" id="tipp'.$count1.'" onsubmit="return false">';
 						}
-						echo $row3['datetime'] . //Datum
-						 $row3['ateam'];
+						echo $row3['datetime'].'<img src="images/flags/'.$row3['ateam'].'.png" width="50px height="50px">'.$row3['ateam'];  //Datum, Flagge und Mannschaft
+						 
 
 						//Name Mannschaft A
 						if ($validDate) {
@@ -120,7 +119,7 @@ session_start();
 							echo $row3['tippScoreA'];
 							//Tipp für Mannschaft A
 						}
-						echo $row3['bteam'];
+						echo '<img src="images/flags/'.$row3['bteam'].'.png" width="50px height="50px">'.$row3['bteam'];
 						// Name Mannschaft B
 						if ($validDate) {
 							echo '<input type="text" value="' . $row3['tippScoreB'] . '" name="' . $row3['id'] . 'b" size="1">';
@@ -132,7 +131,7 @@ session_start();
 						echo $row3['sA'] . ':' . $row3['sB'];
 						// Spielergebnis
 						if ($validDate) {
-							echo '<input type="button" id="submitbtn'.$count1.'" value="Best&auml;tigen">';
+							echo '<input type="button" id="submitbtn'.$count1.'" value="OK!">';
 							$count1++;
 						}
 						//Bestätigen der Eingabe

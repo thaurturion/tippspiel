@@ -1,8 +1,5 @@
 <?php
-
 session_start();
-
-//Done: Trigger für Löschung der tipps beim löschen eines spielers eingebaut
 ?>
 <script type="text/javascript">
 	jQuery('#register').click(function() {
@@ -14,18 +11,9 @@ session_start();
 			jQuery.post('handle_login.php?', jQuery('#logindaten').serialize(), function(data) {
 				jQuery('#content').empty();
 				jQuery('#content').load('index-cont.php');
-				jQuery('#p1').show();
-				jQuery('#p2').show();
-				<?php
-if(isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
-			?>
-			jQuery('#results').show();
-			jQuery('#usermngmt').show();
-			<?php
-			}
-			?>
 				loadFooter();
 				loadHeader();
+				customize();
 			}, 'html');
 
 		});

@@ -42,15 +42,6 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
 						$admin = 1;
 						
 					}
-					/*$m = new LogMessage(20, $_POST['username'] . ' hat sich angemeldet');
-					 if(!LogUtil::log($m)){
-					 echo "Logging-Fehler";
-					 }*/
-				} else {
-					/*$m = new LogMessage(20, $_POST['username'] . ' konnte nicht angemeldet werden (' . $_POST['pwd'] . ')');
-					 if(!LogUtil::log($m)){
-					 echo "Logging-Fehler";
-					 }*/
 				}
 			} else {
 				//Kein Datensatz vorhanden! (keine erste Zeile der Ergebnistabelle)

@@ -38,7 +38,7 @@ class knockout {
 						echo '<form action="#" method="post" id="tipp' . $count1 . '" onsubmit="return false">';
 					}
 					echo $row3['datetime'] . //Datum
-					$row3['ateam'];
+					'<img src="images/flags/'.$row3['ateam'].'.png" width="50px height="50px">'.$row3['ateam'];
 
 					//Name Mannschaft A
 					if ($validDate) {
@@ -52,7 +52,7 @@ class knockout {
 						echo $row3['tippScoreA'];
 						//Tipp für Mannschaft A
 					}
-					echo $row3['bteam'];
+					echo '<img src="images/flags/'.$row3['bteam'].'.png" width="50px height="50px">'.$row3['bteam'];
 					// Name Mannschaft B
 					if ($validDate) {
 						echo '<input type="text" value="' . $row3['tippScoreB'] . '" name="' . $row3['id'] . 'b" size="1">';

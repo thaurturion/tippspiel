@@ -1,5 +1,6 @@
 body {
 	background-color: #3a3a3a;
+	font-family: 'Open Sans';
 }
 
 #wrapper {
@@ -51,7 +52,6 @@ nav {
 	text-align: right;
 	float: left;
 	font-size: 200%;
-	font-family: "Arial Black,Times,serif";
 }
 
 #desc a {
@@ -63,6 +63,7 @@ nav {
 	width: 1014px;
 	font-size: 10px;
 	float: left;
+	padding-top:8px;
 	padding-left: 15px;
 	padding-bottom: 5px;
 }
@@ -120,7 +121,7 @@ h2:active {
 }
 
 h2 {
-	margin-bottom:25px;
+	margin-bottom:31px;
 }
 
 td {
@@ -143,5 +144,44 @@ td {
 
 .menuitem:hover {
 	cursor: pointer;
+}
+
+.tabelleturnierteilnehmer{
+	
+	text-align: center;
+	text-decoration: underline;
+	font-size: 140%;
+}
+
+.tabelleteilnehmer{
+	  border: 1px solid black;
+  	border-collapse: collapse;
+  	text-align: center;
+  	background-color: #C2CCD3
+}
+
+.ueberschrifttabelle{
+	font-size: 100%;
+	font-weight: bold;
+}
+	
+.spiele {
+	float: left;
+	margin-right: 50px;
+}
+
+#login a:active {
+	color:white;
+	text-decoration:none;
+}
+#login a:visited {
+	color:black;
+	text-decoration:none;
+
+}
+#login a:hover {
+	color:white;
+	text-decoration:none;
+	
 }
 

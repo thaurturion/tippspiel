@@ -4,8 +4,7 @@
 	jQuery(function() {
 		jQuery('#submitbtn').click(function() {
 			jQuery.post('handle_registrierung.php?', jQuery('#anmeldedaten').serialize(), function(data) {
-				jQuery('#content').empty();
-				jQuery('#content').append(data);
+				jQuery('#content').load('login.php');
 			}, 'html');
 
 		});
